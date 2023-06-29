@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://dqq4ucfnhdrxy"]
+
+[ext_resource type="PackedScene" uid="uid://cx24hx1po2eph" path="res://Prefabs/Lanterns/5m_lichtstele.tscn" id="1_fyqqw"]
+[ext_resource type="PackedScene" uid="uid://bixvrajaebc2p" path="res://Prefabs/Lanterns/2m_lichtstele.tscn" id="2_1nspw"]
+[ext_resource type="PackedScene" uid="uid://wm8m74pyu1g1" path="res://Prefabs/Lanterns/aufsatzleuchte_zwei_arm.tscn" id="3_vrgii"]
+[ext_resource type="PackedScene" uid="uid://btbyo4jn34yl0" path="res://Prefabs/Lanterns/beton_aufsatzleuchte.tscn" id="4_2whlq"]
+[ext_resource type="PackedScene" uid="uid://mda08560ytrg" path="res://Prefabs/Lanterns/lvb_doppel_mast.tscn" id="5_cgq16"]
+[ext_resource type="PackedScene" uid="uid://bmy62on603hh6" path="res://Prefabs/Lanterns/lvb_mast.tscn" id="6_my06x"]
+[ext_resource type="PackedScene" uid="uid://c1ohp65e12jjb" path="res://Prefabs/Lanterns/schinkelleuchte_mast.tscn" id="7_k60l6"]
+[ext_resource type="PackedScene" uid="uid://cpgk3hsg3vwfl" path="res://Prefabs/Lanterns/schinkelleuchte_wand.tscn" id="8_n3sea"]
+
+[node name="AlleLaternen" type="Node3D"]
+
+[node name="5m_Lichtstele" parent="." instance=ExtResource("1_fyqqw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.15834, 0, 0.075)
+
+[node name="OmniLight3DHull" parent="5m_Lichtstele/Mesh2" index="1"]
+visible = false
+
+[node name="2m_Lichtstele" parent="." instance=ExtResource("2_1nspw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4071, 0, 0)
+
+[node name="OmniLight3DHull" parent="2m_Lichtstele/Mesh2" index="1"]
+visible = false
+
+[node name="Aufsatzleuchte_Zwei Arm" parent="." instance=ExtResource("3_vrgii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2335, 0, 0)
+
+[node name="CSGCylinder3D2" parent="Aufsatzleuchte_Zwei Arm/Mesh2" index="3"]
+visible = false
+
+[node name="Beton_Aufsatzleuchte" parent="." instance=ExtResource("4_2whlq")]
+
+[node name="LVB_Doppel Mast" parent="." instance=ExtResource("5_cgq16")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.63317, 0, 0)
+
+[node name="CSGCylinder3D" parent="LVB_Doppel Mast/Mesh2" index="2"]
+visible = false
+
+[node name="CSGCylinder3D2" parent="LVB_Doppel Mast/Mesh2" index="3"]
+visible = false
+
+[node name="LVB_Mast" parent="." instance=ExtResource("6_my06x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.76682, 0, 0)
+
+[node name="CSGCylinder3D" parent="LVB_Mast/Mesh2" index="1"]
+visible = false
+
+[node name="Schinkelleuchte_Mast" parent="." instance=ExtResource("7_k60l6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.84505, 0, 0)
+
+[node name="Schinkelleuchte_Wand" parent="." instance=ExtResource("8_n3sea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1947, 0, 0)
+
+[node name="OmniLight3DHull" parent="Schinkelleuchte_Wand/Mesh2" index="1"]
+visible = false
+
+[editable path="5m_Lichtstele"]
+[editable path="2m_Lichtstele"]
+[editable path="Aufsatzleuchte_Zwei Arm"]
+[editable path="Beton_Aufsatzleuchte"]
+[editable path="LVB_Doppel Mast"]
+[editable path="LVB_Mast"]
+[editable path="Schinkelleuchte_Mast"]
+[editable path="Schinkelleuchte_Wand"]

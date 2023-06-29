@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://ck45cj2j5xb68"]
+
+[ext_resource type="Script" path="res://Runtime/World/Raycast.cs" id="1_rstht"]
+[ext_resource type="Script" path="res://Runtime/World/RigidBody3DAccess.cs" id="2_hl0je"]
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_ie5g7"]
+length = 100.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51aku"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 0.498039)
+
+[sub_resource type="TorusMesh" id="TorusMesh_vkvee"]
+inner_radius = 0.792
+rings = 32
+ring_segments = 3
+
+[node name="Raycast" type="Node3D"]
+script = ExtResource("1_rstht")
+
+[node name="Body" type="RigidBody3D" parent="."]
+max_contacts_reported = 10
+contact_monitor = true
+freeze_mode = 1
+script = ExtResource("2_hl0je")
+
+[node name="CollisionPolygon3D" type="CollisionShape3D" parent="Body"]
+shape = SubResource("SeparationRayShape3D_ie5g7")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
+use_collision = true
+size = Vector3(0.1, 0.1, 100)
+material = SubResource("StandardMaterial3D_51aku")
+
+[node name="Cursor" type="CSGMesh3D" parent="."]
+mesh = SubResource("TorusMesh_vkvee")
+material = SubResource("StandardMaterial3D_51aku")

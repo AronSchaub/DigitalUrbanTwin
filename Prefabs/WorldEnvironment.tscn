@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://b0gt3cxo3h2ph"]
+
+[ext_resource type="Environment" uid="uid://cjbruck6yyxpk" path="res://Enviroments/DefaultEnvironment.tres" id="1_vgamy"]
+[ext_resource type="Script" path="res://Runtime/DayNightCycle/EnvironmentController.cs" id="2_h1ghq"]
+[ext_resource type="Script" path="res://Runtime/DayNightCycle/Sun.cs" id="3_th4nv"]
+[ext_resource type="Script" path="res://Runtime/DayNightCycle/Moon.cs" id="4_l7k6t"]
+[ext_resource type="Script" path="res://Runtime/DayNightCycle/TimeController.cs" id="5_ers3n"]
+[ext_resource type="Script" path="res://Runtime/MVVM/View/MVVMTimeControl.cs" id="6_br2xo"]
+[ext_resource type="Resource" uid="uid://qjasq6ffsfhc" path="res://Scenes/Demos/UIDemo.tscn" id="7_p1cqf"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_0f20i"]
+dof_blur_far_distance = 100.0
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = ExtResource("1_vgamy")
+camera_attributes = SubResource("CameraAttributesPractical_0f20i")
+script = ExtResource("2_h1ghq")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.954491, -0.206405, 0.215275, 0, 0.72182, 0.692081, -0.298239, 0.660585, -0.688971, 0, 5.36293, 0)
+light_energy = 0.7
+shadow_enabled = true
+directional_shadow_mode = 0
+script = ExtResource("3_th4nv")
+
+[node name="Moon" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.853278, -0.185904, 0.487192, -3.06788e-08, 0.934292, 0.35651, -0.521457, -0.304202, 0.79721, 0, 0, 0)
+visible = false
+light_angular_distance = 0.87
+shadow_enabled = true
+script = ExtResource("4_l7k6t")
+
+[node name="TimeControl" type="Node" parent="."]
+script = ExtResource("5_ers3n")
+Year = 2023
+Month = 1
+Day = 16
+Hour = 19
+Minutes = 38
+Seconds = 19
+Milliseconds = 520
+
+[node name="MVVMTimeControl" type="Node" parent="TimeControl" node_paths=PackedStringArray("TimeControl")]
+script = ExtResource("6_br2xo")
+Year_binding = "-None-"
+Year_direction = 0
+Year_converter = ""
+Year_param = ""
+Month_binding = "-None-"
+Month_direction = 0
+Month_converter = ""
+Month_param = ""
+Day_binding = "-None-"
+Day_direction = 0
+Day_converter = ""
+Day_param = ""
+Hour_binding = "-None-"
+Hour_direction = 0
+Hour_converter = ""
+Hour_param = ""
+Minute_binding = "-None-"
+Minute_direction = 0
+Minute_converter = ""
+Minute_param = ""
+Second_binding = "-None-"
+Second_direction = 0
+Second_converter = ""
+Second_param = ""
+Millisecond_binding = "-None-"
+Millisecond_direction = 0
+Millisecond_converter = ""
+Millisecond_param = ""
+Multiplier_binding = "Speed"
+Multiplier_direction = 0
+Multiplier_converter = ""
+Multiplier_param = ""
+TimeControl = NodePath("..")
+DataModel = ExtResource("7_p1cqf")

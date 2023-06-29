@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://iuswwtmysjni"]
+
+[ext_resource type="PackedScene" uid="uid://c75lnlfxov2u5" path="res://Prefabs/Camera.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://b0gt3cxo3h2ph" path="res://Prefabs/WorldEnvironment.tscn" id="5_tspe8"]
+[ext_resource type="PackedScene" uid="uid://cd4qmia6yy16n" path="res://addons/PolygonCity/Prefabs/Full/City.tscn" id="6"]
+[ext_resource type="Shader" path="res://Shaders/TiltShift.gdshader" id="14"]
+
+[sub_resource type="ShaderMaterial" id="3"]
+shader = ExtResource("14")
+
+[node name="Base" type="Node3D"]
+
+[node name="Spawn" type="Node3D" parent="."]
+
+[node name="Spatials" type="Node" parent="."]
+
+[node name="City" parent="Spatials" instance=ExtResource("6")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TiltShift" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TiltShift"]
+material = SubResource("3")
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 1
+
+[node name="Camera" parent="." instance=ExtResource("1")]
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("5_tspe8")]

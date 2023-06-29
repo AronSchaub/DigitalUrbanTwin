@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxl4qguj7wrhw"]
+
+[ext_resource type="PackedScene" uid="uid://ck45cj2j5xb68" path="res://Prefabs/Raycast.tscn" id="1_7w1ix"]
+[ext_resource type="PackedScene" uid="uid://c75lnlfxov2u5" path="res://Prefabs/Camera.tscn" id="2_k04xy"]
+[ext_resource type="Script" path="res://Runtime/World/RigidBody3DAccess.cs" id="2_q3xbk"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_i40yu"]
+
+[node name="RaycastDemo" type="Node3D"]
+
+[node name="Raycast" parent="." instance=ExtResource("1_7w1ix")]
+transform = Transform3D(0.646843, -0.239748, -0.723957, 0, 0.949299, -0.314373, 0.762623, 0.20335, 0.614047, 7.46631, 3.4151, 3.8105)
+
+[node name="Camera" parent="." instance=ExtResource("2_k04xy")]
+
+[node name="Plane" type="RigidBody3D" parent="."]
+max_contacts_reported = 5
+contact_monitor = true
+freeze = true
+freeze_mode = 1
+script = ExtResource("2_q3xbk")
+
+[node name="PlaneMesh" type="CSGMesh3D" parent="Plane"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+transparency = 0.72
+use_collision = true
+mesh = SubResource("PlaneMesh_i40yu")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9.8917)

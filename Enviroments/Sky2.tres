@@ -1,0 +1,9 @@
+[gd_resource type="Sky" load_steps=3 format=3 uid="uid://cxcaki5bgpqd7"]
+
+[ext_resource type="Shader" path="res://Enviroments/clouds.gdshader" id="1_6ji5y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jcxn0"]
+shader = ExtResource("1_6ji5y")
+
+[resource]
+sky_material = SubResource("ShaderMaterial_jcxn0")

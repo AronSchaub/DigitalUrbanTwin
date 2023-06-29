@@ -1,0 +1,316 @@
+[gd_scene load_steps=44 format=3 uid="uid://ral3lyqpe7jw"]
+
+[ext_resource type="Script" path="res://Runtime/XR/XRController.cs" id="1_t7do1"]
+[ext_resource type="Environment" uid="uid://cjbruck6yyxpk" path="res://Enviroments/DefaultEnvironment.tres" id="2_u8ypv"]
+[ext_resource type="PackedScene" uid="uid://hnm6xxmjk0r5" path="res://Prefabs/001_grosse_fleischergasse.tscn" id="4_jcfyn"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/scatter.gd" id="6_5iefi"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="7_c4yxa"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="8_ndhud"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="9_qe6i1"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="10_j51d6"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_item.gd" id="11_jt6pa"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_shape.gd" id="12_nux8s"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/shapes/path_shape.gd" id="13_up5gp"]
+[ext_resource type="PackedScene" uid="uid://db3ncuvp00eto" path="res://Prefabs/Street.tscn" id="14_jip1a"]
+[ext_resource type="PackedScene" uid="uid://caqxfqurbp3ku" path="res://addons/proton_scatter/demos/assets/pine_tree.tscn" id="14_uo8ce"]
+[ext_resource type="PackedScene" uid="uid://jr2hrqkuauus" path="res://Prefabs/Trees/oak_english_desktop_field.tscn" id="17_5r2y7"]
+[ext_resource type="PackedScene" uid="uid://o37nmglgwud3" path="res://Prefabs/Trees/bush_desktop.tscn" id="18_tkkw3"]
+[ext_resource type="PackedScene" uid="uid://delq0xv1fuj10" path="res://addons/PolygonCity/Prefabs/sm_veh_car_medium_01.tscn" id="20_5cxug"]
+[ext_resource type="PackedScene" uid="uid://cd0qvkkfbp82d" path="res://addons/PolygonCity/Prefabs/sm_veh_car_muscle_01.tscn" id="21_4747w"]
+[ext_resource type="Script" path="res://Runtime/XR/XRCamera.cs" id="21_a4ecu"]
+[ext_resource type="PackedScene" uid="uid://cbikk1x768231" path="res://addons/PolygonCity/Prefabs/sm_veh_car_sedan_01.tscn" id="22_7oyop"]
+[ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="22_j7nll"]
+[ext_resource type="PackedScene" uid="uid://c1ohp65e12jjb" path="res://Prefabs/Lanterns/schinkelleuchte_mast.tscn" id="22_pyfwa"]
+[ext_resource type="PackedScene" uid="uid://cpgk3hsg3vwfl" path="res://Prefabs/Lanterns/schinkelleuchte_wand.tscn" id="23_1eknd"]
+[ext_resource type="PackedScene" uid="uid://fiul51tsyoop" path="res://addons/godot-xr-tools/functions/function_teleport.tscn" id="25_d8a25"]
+[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="26_76gv5"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="26_d216w"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="26_heqhv"]
+[ext_resource type="PackedScene" uid="uid://du3wr7vmmnbjl" path="res://Prefabs/P_GUI.tscn" id="27_gk453"]
+[ext_resource type="PackedScene" uid="uid://dlla20fbs1ofk" path="res://addons/xr-tools-extensions/functions/function_place.tscn" id="28_ec3p5"]
+[ext_resource type="PackedScene" uid="uid://b0gt3cxo3h2ph" path="res://Prefabs/WorldEnvironment.tscn" id="29_0tuni"]
+[ext_resource type="ArrayOccluder3D" uid="uid://dq2uot5pmpoxk" path="res://Scenes/Leipzig_GrosseFleischergasse/Leipzig_GrosseFleischergasse.occ" id="30_gt04u"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bnopb"]
+size = Vector2(200, 200)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w8f8j"]
+albedo_color = Color(0.211765, 0.211765, 0.211765, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l3uel"]
+size = Vector3(200, 0.1, 200)
+
+[sub_resource type="Resource" id="Resource_e02ld"]
+script = ExtResource("8_ndhud")
+amount = 6000
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = true
+reference_frame = 1
+
+[sub_resource type="Resource" id="Resource_bsngi"]
+script = ExtResource("9_qe6i1")
+position = Vector3(0.2, 0, 0.2)
+rotation = Vector3(20, 360, 20)
+scale = Vector3(6, 4, 6)
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 2
+
+[sub_resource type="Resource" id="Resource_qml51"]
+script = ExtResource("10_j51d6")
+ray_direction = Vector3(0, -1, 0)
+ray_length = 10.0
+ray_offset = 1.0
+remove_points_on_miss = true
+align_with_collision_normal = false
+max_slope = 90.0
+collision_mask = 1
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_77ve1"]
+script = ExtResource("7_c4yxa")
+stack = Array[Resource]([SubResource("Resource_e02ld"), SubResource("Resource_bsngi"), SubResource("Resource_qml51")])
+
+[sub_resource type="Curve3D" id="Curve3D_djks6"]
+_data = {
+"points": PackedVector3Array(1.17588, 0, 1.72732, -1.17588, 0, -1.72732, -1.44018, -4.17233e-07, 8.51368, -0.6379, 0, 1.01673, 0.6379, 0, -1.01673, -1.34385, -4.17233e-07, -9.05038, -0.738981, 0, -0.806705, 0.738981, 0, 0.806705, 2.86301, -4.17233e-07, -9.11177, 1.29226, 0, -2.23403, -1.29226, 0, 2.23403, 2.96698, -4.17233e-07, 8.33743),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="Resource" id="Resource_aiaw6"]
+script = ExtResource("13_up5gp")
+closed = true
+thickness = 0.0
+curve = SubResource("Curve3D_djks6")
+
+[sub_resource type="Curve3D" id="Curve3D_p0r7e"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0.1, 0, 0, 0, 0, 0, 0, 0, 0, 0.1, 32, 0, 0, 0, 0, 0, 0, 0, 0.1, 100),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_wdwwj"]
+auto_exposure_enabled = true
+dof_blur_far_enabled = true
+dof_blur_far_distance = 25.0
+dof_blur_far_transition = 100.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gagb6"]
+radius = 0.2
+height = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_7a1n7"]
+
+[node name="World" type="Node3D"]
+
+[node name="001-grosse_fleischergasse" parent="." instance=ExtResource("4_jcfyn")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="."]
+use_collision = true
+mesh = SubResource("PlaneMesh_bnopb")
+material = SubResource("StandardMaterial3D_w8f8j")
+
+[node name="Area3D" type="Area3D" parent="CSGMesh3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGMesh3D/Area3D"]
+shape = SubResource("BoxShape3D_l3uel")
+
+[node name="Grass" type="Node3D" parent="."]
+transform = Transform3D(0.99233, 0, -0.123619, 0, 1, 0, 0.123619, 0, 0.99233, -9.21989, 0.590527, -13.879)
+script = ExtResource("6_5iefi")
+modifier_stack = SubResource("Resource_77ve1")
+
+[node name="ScatterItem" type="Node3D" parent="Grass"]
+script = ExtResource("11_jt6pa")
+source_scale_multiplier = 0.2
+path = "res://addons/proton_scatter/demos/assets/grass_2.tscn"
+
+[node name="PathShape" type="Node3D" parent="Grass"]
+script = ExtResource("12_nux8s")
+shape = SubResource("Resource_aiaw6")
+
+[node name="Street" parent="." instance=ExtResource("14_jip1a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00014019, -4.76837e-07, -30.3795)
+curve = SubResource("Curve3D_p0r7e")
+StreetName = "Große Fleischergasse"
+
+[node name="Trees" type="Node3D" parent="."]
+
+[node name="pine_tree" parent="Trees" instance=ExtResource("14_uo8ce")]
+transform = Transform3D(3, 0, 0, 0, 1.5, 0, 0, 0, 3, 7.76975, 1.49012e-06, -8.63118)
+
+[node name="pine_tree2" parent="Trees" instance=ExtResource("14_uo8ce")]
+transform = Transform3D(3, 0, 0, 0, 1.5, 0, 0, 0, 3, 7.76975, 1.49012e-06, -1.78534)
+
+[node name="pine_tree3" parent="Trees" instance=ExtResource("14_uo8ce")]
+transform = Transform3D(3, 0, 0, 0, 1.5, 0, 0, 0, 3, 7.76975, 1.49012e-06, 5.87769)
+
+[node name="pine_tree4" parent="Trees" instance=ExtResource("14_uo8ce")]
+transform = Transform3D(3, 0, 0, 0, 1.5, 0, 0, 0, 3, 7.76975, 1.49012e-06, 15.395)
+
+[node name="pine_tree5" parent="Trees" instance=ExtResource("14_uo8ce")]
+transform = Transform3D(3, 0, 0, 0, 1.5, 0, 0, 0, 3, 7.76975, 1.49012e-06, 30.3307)
+
+[node name="Oak_English_Desktop_Field" parent="Trees" instance=ExtResource("17_5r2y7")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -9.10186, 1.19209e-07, -8.72744)
+
+[node name="Oak_English_Desktop_Field2" parent="Trees" instance=ExtResource("17_5r2y7")]
+transform = Transform3D(0.0619912, 0, -0.496142, 0, 0.5, 0, 0.496142, 0, 0.0619912, -9.10186, 1.19209e-07, -21.268)
+
+[node name="Bush_Desktop" parent="Trees" instance=ExtResource("18_tkkw3")]
+transform = Transform3D(3.47803, 0, -9.37568, 0, 10, 0, 9.37568, 0, 3.47803, 13.1823, -0.788949, -9.77166)
+
+[node name="Bush_Desktop2" parent="Trees" instance=ExtResource("18_tkkw3")]
+transform = Transform3D(3.24215, 0, 9.45984, 0, 10, 0, -9.45984, 0, 3.24215, 13.1277, -0.788949, -6.25785)
+
+[node name="Bush_Desktop3" parent="Trees" instance=ExtResource("18_tkkw3")]
+transform = Transform3D(4.44588, 0, -8.95735, 0, 10, 0, 8.95735, 0, 4.44588, 13.076, -0.788949, -2.93775)
+
+[node name="Bush_Desktop4" parent="Trees" instance=ExtResource("18_tkkw3")]
+transform = Transform3D(1.0911, 0, 9.9403, 0, 10, 0, -9.9403, 0, 1.0911, 13.0046, -0.788949, 1.65612)
+
+[node name="Bush_Desktop5" parent="Trees" instance=ExtResource("18_tkkw3")]
+transform = Transform3D(7.23015, 0, 6.90832, 0, 10, 0, -6.90832, 0, 7.23015, 12.9077, -0.788949, 7.88861)
+
+[node name="Bush_Desktop6" parent="Trees" instance=ExtResource("18_tkkw3")]
+transform = Transform3D(-0.996497, 0, -9.95022, 0, 10, 0, 9.95022, 0, -0.996497, 11.3664, -0.788949, 10.4166)
+
+[node name="Bush_Desktop7" parent="Trees" instance=ExtResource("18_tkkw3")]
+transform = Transform3D(-3.73781, 0, 9.27517, 0, 10, 0, -9.27517, 0, -3.73781, 10.8478, -0.788949, 14.339)
+
+[node name="Bush_Desktop8" parent="Trees" instance=ExtResource("18_tkkw3")]
+transform = Transform3D(-8.74645, 0, 4.84764, 0, 10, 0, -4.84764, 0, -8.74645, 12.2841, -0.788949, 19.033)
+
+[node name="Bush_Desktop9" parent="Trees" instance=ExtResource("18_tkkw3")]
+transform = Transform3D(1.71259, 0, 9.85226, 0, 10, 0, -9.85226, 0, 1.71259, 11.9332, -0.788949, 22.3843)
+
+[node name="Bush_Desktop10" parent="Trees" instance=ExtResource("18_tkkw3")]
+transform = Transform3D(-0.805468, 0, -9.96751, 0, 10, 0, 9.96751, 0, -0.805468, 11.8624, -0.788949, 25.5482)
+
+[node name="Bush_Desktop11" parent="Trees" instance=ExtResource("18_tkkw3")]
+transform = Transform3D(1.31045, 0, 9.91376, 0, 10, 0, -9.91376, 0, 1.31045, 10.9766, -0.788949, 29.0234)
+
+[node name="Bush_Desktop12" parent="Trees" instance=ExtResource("18_tkkw3")]
+transform = Transform3D(7.50457, 0, -6.60919, 0, 10, 0, 6.60919, 0, 7.50457, 11.2599, -0.788949, 32.7385)
+
+[node name="Cars" type="Node3D" parent="."]
+
+[node name="SM_Veh_Car_Medium_01" parent="Cars" instance=ExtResource("20_5cxug")]
+transform = Transform3D(-0.999914, 0, -0.0131071, 0, 1, 0, 0.0131071, 0, -0.999914, 1.80705, 0.100001, 12.4167)
+
+[node name="SM_Veh_Car_Medium_02" parent="Cars" instance=ExtResource("20_5cxug")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.17077, 0, -12.2198)
+
+[node name="SM_Veh_Car_Muscle_01" parent="Cars" instance=ExtResource("21_4747w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2088, 0, -5.80512)
+
+[node name="SM_Veh_Car_Sedan_01" parent="Cars" instance=ExtResource("22_7oyop")]
+transform = Transform3D(-0.999914, 0, -0.0131071, 0, 1, 0, 0.0131071, 0, -0.999914, 1.8286, 0, 18.6604)
+
+[node name="Lanterns" type="Node3D" parent="."]
+
+[node name="Schinkelleuchte_Mast" parent="Lanterns" instance=ExtResource("22_pyfwa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.21357, 3.72529e-07, -8.54274)
+
+[node name="Schinkelleuchte_Mast2" parent="Lanterns" instance=ExtResource("22_pyfwa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.21357, 3.72529e-07, 30.3361)
+EnableDebug = true
+
+[node name="Schinkelleuchte_Mast3" parent="Lanterns" instance=ExtResource("22_pyfwa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.06632, 3.72529e-07, 54.5229)
+EnableDebug = true
+
+[node name="Schinkelleuchte_Wand" parent="Lanterns" instance=ExtResource("23_1eknd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -8.80845, 0.00580978, 2.76869)
+EnableDebug = true
+LightTemperature = 2300.0
+LightIntensity = 1.934
+
+[node name="Schinkelleuchte_Wand2" parent="Lanterns" instance=ExtResource("23_1eknd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -10.1438, 0.10576, 13.5505)
+EnableDebug = true
+LightIntensity = 1.0
+
+[node name="Schinkelleuchte_Wand3" parent="Lanterns" instance=ExtResource("23_1eknd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -9.48471, 0.10576, 27.4599)
+EnableDebug = true
+LightIntensity = 1.0
+
+[node name="VRDemo" type="XROrigin3D" parent="."]
+editor_description = "https://youtu.be/wDXnsy2IH1A"
+script = ExtResource("1_t7do1")
+
+[node name="XrCamera3d" type="XRCamera3D" parent="VRDemo"]
+transform = Transform3D(-0.999276, 0, -0.0380564, 0, 1, 0, 0.0380564, 0, -0.999276, -4.15497, 1.17674, -24.858)
+cull_mask = 524287
+environment = ExtResource("2_u8ypv")
+attributes = SubResource("CameraAttributesPractical_wdwwj")
+current = true
+fov = 90.0
+script = ExtResource("21_a4ecu")
+
+[node name="CsgMesh3d" type="CSGMesh3D" parent="VRDemo/XrCamera3d"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -7.77156e-16, 0, 1, 0.0029974, -0.0111673, 0.121655)
+layers = 524288
+mesh = SubResource("CapsuleMesh_gagb6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VRDemo/XrCamera3d/CsgMesh3d"]
+transform = Transform3D(0.05, 3.5822e-16, -2.07422e-24, -8.95551e-17, 0.2, -9.36739e-10, 1.98212e-25, 1.87348e-09, 0.1, 0, 0.00666976, -0.175131)
+layers = 524288
+mesh = SubResource("BoxMesh_7a1n7")
+
+[node name="LeftController" type="XRController3D" parent="VRDemo"]
+transform = Transform3D(-0.999276, 0, -0.0380564, 0, 1, 0, 0.0380564, 0, -0.999276, -3.74096, 0.818137, -24.8447)
+tracker = &"left_hand"
+
+[node name="LeftHand" parent="VRDemo/LeftController" instance=ExtResource("22_j7nll")]
+
+[node name="FunctionTeleport" parent="VRDemo/LeftController" instance=ExtResource("25_d8a25")]
+
+[node name="FunctionMenu" type="Node3D" parent="VRDemo/LeftController"]
+transform = Transform3D(1.77636e-15, 4.47035e-08, -0.999999, 0.999999, -4.37114e-08, 0, -4.37114e-08, -0.999999, -4.47035e-08, -0.094619, -0.0321881, 0.128027)
+
+[node name="Viewport2Din3D" parent="VRDemo/LeftController/FunctionMenu" instance=ExtResource("26_d216w")]
+transform = Transform3D(1, -1.86265e-09, -2.79397e-09, -5.58794e-09, 1, 5.96046e-08, -9.31323e-10, -1.19209e-07, 1, 0.111698, 0.0509357, 0)
+screen_size = Vector2(0.3, 0.16)
+viewport_size = Vector2(705, 404)
+scene = ExtResource("27_gk453")
+update_mode = 2
+throttle_fps = 15.0
+
+[node name="RightController" type="XRController3D" parent="VRDemo"]
+transform = Transform3D(-0.999276, 0, -0.0380564, 0, 1, 0, 0.0380564, 0, -0.999276, -4.47814, 0.796329, -24.8736)
+tracker = &"right_hand"
+
+[node name="RightHand" parent="VRDemo/RightController" instance=ExtResource("26_76gv5")]
+
+[node name="MenuSelector" parent="VRDemo/RightController" instance=ExtResource("26_heqhv")]
+show_laser = 2
+laser_length = 1
+y_offset = -0.001
+distance = 1.0
+collision_mask = 1048579
+
+[node name="PlaceAndSelect" parent="VRDemo/RightController" instance=ExtResource("28_ec3p5")]
+PlaceButtonAction = "grip_click"
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("29_0tuni")]
+
+[node name="TimeControl" parent="WorldEnvironment" index="2"]
+Hour = 6
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
+occluder = ExtResource("30_gt04u")
+
+[editable path="WorldEnvironment"]

@@ -1,0 +1,15 @@
+[gd_resource type="Environment" load_steps=2 format=3 uid="uid://cqqxsaiqh5sa3"]
+
+[ext_resource type="Sky" uid="uid://cxcaki5bgpqd7" path="res://Enviroments/Sky.tres" id="1_3u1dl"]
+
+[resource]
+background_mode = 2
+sky = ExtResource("1_3u1dl")
+ambient_light_color = Color(1, 1, 1, 1)
+tonemap_mode = 3
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+fog_light_color = Color(1, 1, 1, 1)

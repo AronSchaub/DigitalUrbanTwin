@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://x2q05dy5xdal"]
+
+[ext_resource type="PackedScene" uid="uid://brufshgy6skm7" path="res://Models/Sponza/glTF/Sponza.gltf" id="1_kfti8"]
+[ext_resource type="Environment" uid="uid://cjbruck6yyxpk" path="res://Enviroments/DefaultEnvironment.tres" id="2_40fvq"]
+
+[node name="EnvironmentDemo" type="Node3D"]
+
+[node name="Sponza" parent="." instance=ExtResource("1_kfti8")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_40fvq")
+
+[node name="DirectionalLight3d" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.859058, 0.511878, 0, -0.511878, 0.859058, 0, 14.0868, 0)
+
+[node name="Camera3d" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.751195, -0.66008, 0, 0.66008, 0.751195, 0, 0, 0)

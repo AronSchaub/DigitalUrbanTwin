@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://dapa8005pnmy1"]
+
+[ext_resource type="Script" path="res://Runtime/World/Player.cs" id="1"]
+[ext_resource type="Script" path="res://Runtime/DayNightCycle/Sun.cs" id="2"]
+[ext_resource type="Script" path="res://Runtime/DayNightCycle/Moon.cs" id="3"]
+[ext_resource type="Script" path="res://Runtime/DayNightCycle/TimeControl.cs" id="4"]
+[ext_resource type="PackedScene" uid="uid://dpt6osuho6rqx" path="res://addons/PolygonCity/Full/City/City.gltf" id="4_p88h4"]
+[ext_resource type="Environment" uid="uid://cjbruck6yyxpk" path="res://Enviroments/DefaultEnvironment.tres" id="5"]
+
+[sub_resource type="CapsuleShape3D" id="1"]
+height = 1.8
+
+[node name="Base" type="Node3D"]
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 5.47734, 1.8, 13.5591)
+script = ExtResource("1")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Player"]
+shape = SubResource("1")
+
+[node name="ShootAnimation" type="Timer" parent="Player"]
+
+[node name="FloorDetector" type="RayCast3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="Camera" type="Camera3D" parent="Player"]
+transform = Transform3D(0.999528, 0.0235626, 0.0197001, 0.030713, -0.766826, -0.64112, 6.84121e-08, 0.641423, -0.767187, 4.76837e-06, 0.380428, 0.911242)
+fov = 120.0
+
+[node name="Moon" type="DirectionalLight3D" parent="."]
+visible = false
+script = ExtResource("3")
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("4")
+
+[node name="Spatials" type="Node" parent="."]
+
+[node name="Buildings" type="Node" parent="Spatials"]
+
+[node name="Trees" type="Node" parent="Spatials"]
+
+[node name="Plants" type="Node" parent="Spatials"]
+
+[node name="Environment" type="Node" parent="Spatials"]
+
+[node name="City" parent="Spatials" instance=ExtResource("4_p88h4")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("5")
+
+[node name="Sun" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.585892, 0.810389, 0, -0.810389, 0.585892, -1.90735e-06, 13.5779, 28.5535)
+light_color = Color(0.996078, 0.870588, 0.572549, 1)
+light_energy = 0.7
+shadow_enabled = true
+script = ExtResource("2")

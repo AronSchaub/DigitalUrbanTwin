@@ -1,0 +1,147 @@
+[gd_scene load_steps=12 format=3 uid="uid://cujdkc5ps668p"]
+
+[ext_resource type="PackedScene" uid="uid://c75lnlfxov2u5" path="res://Prefabs/Camera.tscn" id="2_lagsa"]
+[ext_resource type="PackedScene" uid="uid://dukniwpxc5r5a" path="res://Models/Innenstadt/001.gltf" id="3_nrk0u"]
+[ext_resource type="PackedScene" uid="uid://dwx43wokbuld2" path="res://Models/Innenstadt/002.gltf" id="4_xlfvq"]
+[ext_resource type="PackedScene" uid="uid://c7nkbea4c3axn" path="res://Models/Innenstadt/003.gltf" id="5_omqun"]
+[ext_resource type="PackedScene" uid="uid://bs80pm8s1c74o" path="res://Models/Innenstadt/004.gltf" id="6_cgsrq"]
+[ext_resource type="PackedScene" uid="uid://dqess4r8r7xro" path="res://Models/Innenstadt/005.gltf" id="7_nec43"]
+[ext_resource type="Script" path="res://Runtime/Tiles/Street.cs" id="8_ieipc"]
+[ext_resource type="Material" uid="uid://bgv17b1ey88kt" path="res://Materials/M_Pavement_RoadNew_Standard.tres" id="9_rebkp"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6rr2n"]
+size = Vector2(1000, 1000)
+
+[sub_resource type="Curve3D" id="Curve3D_3oy8r"]
+_data = {
+"points": PackedVector3Array(-22.692, -0.851929, -50.8223, 22.692, 0.851929, 50.8223, -0.0204468, 0.251998, -0.124481, -17.9082, 0, -63.3247, 17.9082, 0, 63.3247, 74.038, -3.029, 212.251),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="BoxMesh" id="BoxMesh_7vqkp"]
+
+[node name="Leipzig_Manual" type="Node3D"]
+
+[node name="Spawn" type="Node3D" parent="."]
+transform = Transform3D(0.298158, 0, -0.954517, 0, 1, 0, 0.954517, 0, 0.298158, 185.19, 3.95709, 219.239)
+
+[node name="Camera" parent="Spawn" instance=ExtResource("2_lagsa")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+edgeScrollEnabled = false
+limitsEnabled = false
+perspectivePanningEnabled = true
+optionZoomToCursor = true
+
+[node name="Chunks" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="001" parent="Chunks" instance=ExtResource("3_nrk0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -217.7, 15.7384, -241.862)
+
+[node name="002" parent="Chunks" instance=ExtResource("4_xlfvq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 146.896, 15.7384, -192.351)
+
+[node name="003" parent="Chunks" instance=ExtResource("5_omqun")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -206.939, 16.1586, 183.207)
+
+[node name="004" parent="Chunks" instance=ExtResource("6_cgsrq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 68.1487, 15.7384, 163.678)
+
+[node name="005" parent="Chunks" instance=ExtResource("7_nec43")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 374.497, 15.7384, -636.872)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Chunks"]
+visible = false
+mesh = SubResource("PlaneMesh_6rr2n")
+
+[node name="Street" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 168.858, 2.98848, 179.4)
+curve = SubResource("Curve3D_3oy8r")
+script = ExtResource("8_ieipc")
+
+[node name="Follower1" type="PathFollow3D" parent="Street"]
+transform = Transform3D(0.913115, -0.00623975, 0.407604, 0, 0.999883, 0.0153027, -0.407703, -0.0139749, 0.912893, -0.933561, 0.251998, 0.283222)
+h_offset = -1.0
+rotation_mode = 4
+loop = false
+
+[node name="Follower2" type="PathFollow3D" parent="Street"]
+transform = Transform3D(0.939577, 0.00669613, 0.342228, 0, 0.999808, -0.0195577, -0.342336, 0.0183783, 0.939282, 28.1225, -0.325603, 68.2928)
+progress = 73.9649
+h_offset = 1.0
+rotation_mode = 4
+loop = false
+
+[node name="TextPlacer" type="PathFollow3D" parent="Street"]
+transform = Transform3D(0.931157, 0.00376923, 0.364556, 0, 0.999947, -0.0103362, -0.36462, 0.00962575, 0.930992, 14.1425, 0.253476, 34.0339)
+progress = 36.9824
+rotation_mode = 4
+loop = false
+
+[node name="Label" type="Label3D" parent="Street/TextPlacer"]
+transform = Transform3D(-4.37163e-08, -1.00001, -4.37114e-08, 0, -4.37119e-08, 1, -1.00011, 4.37119e-08, 1.91069e-15, 0, 0.01, 0)
+pixel_size = 0.01
+text = "Hainstraße"
+font_size = 64
+
+[node name="OneOneLane" type="CSGPolygon3D" parent="Street"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.225494, 0, 0.112762)
+use_collision = true
+polygon = PackedVector2Array(-7, -0.1, -7, 0, 7, 0, 7, -0.1)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 5.0
+path_rotation = 2
+path_local = true
+path_continuous_u = true
+path_u_distance = 10.0
+path_joined = false
+material = ExtResource("9_rebkp")
+
+[node name="FollowerS1" type="PathFollow3D" parent="Street"]
+transform = Transform3D(0.913019, -0.00623975, 0.407599, 0, 0.999883, 0.0153025, -0.40766, -0.0139749, 0.912882, -0.933561, 0.251998, 0.283222)
+h_offset = -1.0
+rotation_mode = 4
+loop = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Street/FollowerS1"]
+visible = false
+mesh = SubResource("BoxMesh_7vqkp")
+
+[node name="FollowerS2" type="PathFollow3D" parent="Street"]
+transform = Transform3D(0.913015, -0.00623975, 0.407599, 0, 0.999883, 0.0153025, -0.407658, -0.0139749, 0.912882, 0.892668, 0.251998, -0.532184)
+h_offset = 1.0
+rotation_mode = 4
+loop = false
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Street/FollowerS2"]
+visible = false
+mesh = SubResource("BoxMesh_7vqkp")
+skeleton = NodePath("../../FollowerS1")
+
+[node name="FollowerE1" type="PathFollow3D" parent="Street"]
+transform = Transform3D(0.939443, 0.00669613, 0.342196, 0, 0.999808, -0.0195559, -0.342287, 0.0183783, 0.939195, 26.2434, -0.325603, 68.9775)
+progress = 73.9649
+h_offset = -1.0
+rotation_mode = 4
+loop = false
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Street/FollowerE1"]
+visible = false
+mesh = SubResource("BoxMesh_7vqkp")
+skeleton = NodePath("../../FollowerS1")
+
+[node name="FollowerE2" type="PathFollow3D" parent="Street"]
+transform = Transform3D(0.939445, 0.00669613, 0.3422, 0, 0.999808, -0.0195561, -0.342287, 0.0183783, 0.939205, 28.1225, -0.325603, 68.2928)
+progress = 73.9649
+h_offset = 1.0
+rotation_mode = 4
+loop = false
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Street/FollowerE2"]
+visible = false
+mesh = SubResource("BoxMesh_7vqkp")
+skeleton = NodePath("../../FollowerS1")

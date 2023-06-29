@@ -1,0 +1,17 @@
+[gd_resource type="ORMMaterial3D" load_steps=5 format=3 uid="uid://b7vy8i0fermdw"]
+
+[ext_resource type="Texture2D" uid="uid://dvumlpj8d03xk" path="res://Textures/Pavement_RoadNew/TexturesCom_Pavement_RoadNew_White_1K_albedo.png" id="1_rfuen"]
+[ext_resource type="Texture2D" uid="uid://bexoiubtbffgm" path="res://Textures/Pavement_RoadNew/TexturesCom_Pavement_RoadNew_1K_height.png" id="2_mgpkm"]
+[ext_resource type="Texture2D" uid="uid://blb40nbd08sub" path="res://Textures/Pavement_RoadNew/TexturesCom_Pavement_RoadNew_1K_normal.png" id="3_c05yd"]
+[ext_resource type="Texture2D" uid="uid://0gyxch8it8q5" path="res://Textures/Pavement_RoadNew/TexturesCom_Pavement_RoadNew_1K_roughness.png" id="4_b3cg5"]
+
+[resource]
+albedo_texture = ExtResource("1_rfuen")
+orm_texture = ExtResource("4_b3cg5")
+normal_enabled = true
+normal_texture = ExtResource("3_c05yd")
+clearcoat = 0.14
+heightmap_enabled = true
+heightmap_texture = ExtResource("2_mgpkm")
+refraction_scale = -0.71
+uv1_scale = Vector3(0.422, 8.041, 0)

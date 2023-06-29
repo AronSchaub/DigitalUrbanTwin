@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpsqjenoeyd0f"]
+
+[ext_resource type="PackedScene" uid="uid://ck45cj2j5xb68" path="res://Prefabs/Raycast.tscn" id="1_dm4o6"]
+[ext_resource type="PackedScene" uid="uid://c1ohp65e12jjb" path="res://Prefabs/Lanterns/schinkelleuchte_mast.tscn" id="2_bihkg"]
+[ext_resource type="PackedScene" uid="uid://c75lnlfxov2u5" path="res://Prefabs/Camera.tscn" id="3_3n5ri"]
+
+[node name="DemoLaserSelection" type="Node3D"]
+
+[node name="Raycast" parent="." instance=ExtResource("1_dm4o6")]
+transform = Transform3D(0.83239, 0, 0.554191, 0, 1, 0, -0.554191, 0, 0.83239, -15.5755, 0.579828, -21.9369)
+
+[node name="Schinkelleuchte_Mast" parent="." instance=ExtResource("2_bihkg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.426987, 0, 0.236076)
+LightTemperature = 6500.0
+
+[node name="Camera" parent="." instance=ExtResource("3_3n5ri")]
+edgeScrollEnabled = false

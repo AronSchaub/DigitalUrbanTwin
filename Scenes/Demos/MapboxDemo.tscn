@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dekgdggc7wlw8"]
+
+[ext_resource type="Script" path="res://addons/TerrainPlugin/TerrainMapBox3D.cs" id="1_r3sap"]
+
+[node name="MapboxDemo" type="Node3D"]
+
+[node name="TerrainMapBox3D" type="Node3D" parent="."]
+script = ExtResource("1_r3sap")
+terrainPatches = []

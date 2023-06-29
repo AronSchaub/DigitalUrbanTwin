@@ -1,0 +1,103 @@
+[gd_scene load_steps=5 format=3 uid="uid://db3ncuvp00eto"]
+
+[ext_resource type="Script" path="res://Runtime/Tiles/Street.cs" id="1_2i0ag"]
+[ext_resource type="Material" uid="uid://bgv17b1ey88kt" path="res://Materials/M_Pavement_RoadNew_Standard.tres" id="3_ptj2p"]
+
+[sub_resource type="Curve3D" id="Curve3D_3oy8r"]
+_data = {
+"points": PackedVector3Array(-10.2905, -4.76837e-07, 3.16057, 10.2905, 4.76837e-07, -3.16057, 1.48417, 0.0892329, -0.168889, 19.8489, 4.76837e-07, -2.44596, -19.8489, -4.76837e-07, 2.44596, 0, 0, 20, 0, 0, 0, 0, 0, 0, -13.6123, 4.76837e-07, 8.02468, -10.2905, -4.76837e-07, 3.16057, 10.2905, 4.76837e-07, -3.16057, 0, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
+}
+point_count = 4
+
+[sub_resource type="BoxMesh" id="BoxMesh_7vqkp"]
+
+[node name="Street" type="Path3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00014019, -4.76837e-07, -5.43594e-05)
+curve = SubResource("Curve3D_3oy8r")
+script = ExtResource("1_2i0ag")
+
+[node name="Follower1" type="PathFollow3D" parent="."]
+transform = Transform3D(-0.293599, -4.23433e-08, 0.955808, 0, 1, 4.42899e-08, -0.955929, 1.30051e-08, -0.293562, 1.77777, 0.0892329, 0.78704)
+h_offset = -1.0
+rotation_mode = 4
+loop = false
+
+[node name="Follower2" type="PathFollow3D" parent="."]
+transform = Transform3D(-0.293617, -4.26611e-08, 0.955805, 0, 1, 4.46226e-08, -0.955923, 1.31036e-08, -0.29358, -0.294039, -1.91998e-11, -0.955792)
+progress = 73.9649
+h_offset = 1.0
+rotation_mode = 4
+loop = false
+
+[node name="TextPlacer" type="PathFollow3D" parent="."]
+transform = Transform3D(0.0545343, -1.95608e-08, -0.998389, 0, 1, -1.95875e-08, 0.998512, 1.06832e-09, 0.0545276, -2.58329, -5.70864e-08, 20.2339)
+progress = 36.9824
+rotation_mode = 4
+loop = false
+
+[node name="Label" type="Label3D" parent="TextPlacer"]
+transform = Transform3D(-4.37163e-08, -1.00001, -4.37114e-08, 0, -4.37119e-08, 1, -1.00011, 4.37119e-08, 1.91069e-15, 0, 0.01, 0)
+pixel_size = 0.01
+text = "Placeholder Streetname"
+font_size = 64
+
+[node name="OneOneLane" type="CSGPolygon3D" parent="."]
+use_collision = true
+polygon = PackedVector2Array(-2, -0.1, -2, 0, 2, 0, 2, -0.1)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 5.0
+path_rotation = 2
+path_local = true
+path_continuous_u = true
+path_u_distance = 10.0
+path_joined = false
+material = ExtResource("3_ptj2p")
+
+[node name="FollowerS1" type="PathFollow3D" parent="."]
+transform = Transform3D(-0.293568, -4.23433e-08, 0.955797, 0, 1, 4.42894e-08, -0.955828, 1.30051e-08, -0.293559, 1.77777, 0.0892329, 0.78704)
+h_offset = -1.0
+rotation_mode = 4
+loop = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="FollowerS1"]
+visible = false
+mesh = SubResource("BoxMesh_7vqkp")
+
+[node name="FollowerS2" type="PathFollow3D" parent="."]
+transform = Transform3D(-0.293567, -4.23433e-08, 0.955797, 0, 1, 4.42894e-08, -0.955824, 1.30051e-08, -0.293559, 1.19057, 0.0892329, -1.12482)
+h_offset = 1.0
+rotation_mode = 4
+loop = false
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="FollowerS2"]
+visible = false
+mesh = SubResource("BoxMesh_7vqkp")
+skeleton = NodePath("../../FollowerS1")
+
+[node name="FollowerE1" type="PathFollow3D" parent="."]
+transform = Transform3D(-0.293575, -4.26611e-08, 0.955716, 0, 1, 4.46185e-08, -0.955786, 1.31036e-08, -0.293553, 0.293195, -1.91998e-11, 0.956054)
+progress = 73.9649
+h_offset = -1.0
+rotation_mode = 4
+loop = false
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="FollowerE1"]
+visible = false
+mesh = SubResource("BoxMesh_7vqkp")
+skeleton = NodePath("../../FollowerS1")
+
+[node name="FollowerE2" type="PathFollow3D" parent="."]
+transform = Transform3D(-0.293575, -4.26611e-08, 0.955726, 0, 1, 4.46189e-08, -0.955788, 1.31036e-08, -0.293556, -0.294039, -1.91998e-11, -0.955792)
+progress = 73.9649
+h_offset = 1.0
+rotation_mode = 4
+loop = false
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="FollowerE2"]
+visible = false
+mesh = SubResource("BoxMesh_7vqkp")
+skeleton = NodePath("../../FollowerS1")

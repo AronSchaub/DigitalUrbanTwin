@@ -1,0 +1,22 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://bgv17b1ey88kt"]
+
+[ext_resource type="Texture2D" uid="uid://dvumlpj8d03xk" path="res://Textures/Pavement_RoadNew/TexturesCom_Pavement_RoadNew_White_1K_albedo.png" id="1_bvfbr"]
+[ext_resource type="Texture2D" uid="uid://dvu167kipwpln" path="res://Textures/Pavement_RoadNew/TexturesCom_Pavement_RoadNew_1K_wetness.png" id="2_dmnom"]
+[ext_resource type="Texture2D" uid="uid://bexoiubtbffgm" path="res://Textures/Pavement_RoadNew/TexturesCom_Pavement_RoadNew_1K_height.png" id="2_vrev0"]
+[ext_resource type="Texture2D" uid="uid://blb40nbd08sub" path="res://Textures/Pavement_RoadNew/TexturesCom_Pavement_RoadNew_1K_normal.png" id="3_w4ho8"]
+[ext_resource type="Texture2D" uid="uid://0gyxch8it8q5" path="res://Textures/Pavement_RoadNew/TexturesCom_Pavement_RoadNew_1K_roughness.png" id="4_x8qi1"]
+
+[resource]
+albedo_texture = ExtResource("1_bvfbr")
+metallic_specular = 0.0
+metallic_texture = ExtResource("2_dmnom")
+roughness = 0.0
+roughness_texture = ExtResource("4_x8qi1")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_texture = ExtResource("3_w4ho8")
+clearcoat = 0.81
+clearcoat_texture = ExtResource("2_dmnom")
+heightmap_enabled = true
+heightmap_texture = ExtResource("2_vrev0")
+uv1_scale = Vector3(0.422, 8.041, 0)

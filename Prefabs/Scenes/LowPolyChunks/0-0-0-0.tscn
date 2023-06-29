@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://5n5w0d2507mx"]
+
+[ext_resource type="PackedScene" uid="uid://bgrbutxcocofx" path="res://addons/PolygonFarm/Models/SM_Generic_Ground_Flat_01.fbx" id="1"]
+
+[sub_resource type="BoxShape3D" id="1"]
+
+[node name="Root" type="Area3D"]
+
+[node name="Ground" parent="." instance=ExtResource("1")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+
+[node name="CollisionShape" type="CollisionShape3D" parent="."]
+shape = SubResource("1")

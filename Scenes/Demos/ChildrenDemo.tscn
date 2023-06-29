@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://1dkgr533pitk"]
+
+[ext_resource type="Script" path="res://Runtime/Demo/ChildrenDemo.cs" id="1_ni3sd"]
+
+[node name="Node0" type="Node"]
+script = ExtResource("1_ni3sd")
+
+[node name="Node01" type="Node" parent="."]
+
+[node name="Node011" type="Node" parent="Node01"]
+
+[node name="Node0111" type="Node" parent="Node01/Node011"]
+
+[node name="Node0112" type="Node" parent="Node01/Node011"]
+
+[node name="Node01111" type="Node" parent="Node01/Node011/Node0112"]
+
+[node name="Node012" type="Node" parent="Node01"]
+
+[node name="Node0121" type="Node" parent="Node01/Node012"]
+
+[node name="Node02" type="Node" parent="."]
+
+[node name="Node021" type="Node" parent="Node02"]
+
+[node name="Node0211" type="Node" parent="Node02/Node021"]
+
+[node name="Node0212" type="Node" parent="Node02/Node021"]
+
+[node name="Node03" type="Node" parent="."]
+
+[node name="Node031" type="Node" parent="Node03"]
+
+[node name="Node032" type="Node" parent="Node03"]

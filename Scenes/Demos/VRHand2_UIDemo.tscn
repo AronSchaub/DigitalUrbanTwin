@@ -1,0 +1,58 @@
+[gd_scene load_steps=10 format=3 uid="uid://dtftgopj816g6"]
+
+[ext_resource type="PackedScene" uid="uid://b4kad2kuba1yn" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_hand_low.tscn" id="1_617nq"]
+[ext_resource type="Script" path="res://Runtime/XR/XRController.cs" id="1_p13ab"]
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="2_ibbg7"]
+[ext_resource type="PackedScene" uid="uid://du3wr7vmmnbjl" path="res://Prefabs/P_GUI.tscn" id="2_j8t5d"]
+[ext_resource type="PackedScene" uid="uid://l2n30mpbkdyw" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/right_hand_low.tscn" id="3_451nl"]
+[ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="4_lfyii"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b42dx"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_0luyy"]
+sky_material = SubResource("ProceduralSkyMaterial_b42dx")
+
+[sub_resource type="Environment" id="Environment_d01al"]
+background_mode = 2
+sky = SubResource("Sky_0luyy")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_d01al")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+script = ExtResource("1_p13ab")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+
+[node name="XRController3D" type="XRController3D" parent="XROrigin3D"]
+tracker = &"left_hand"
+
+[node name="LeftHand" parent="XROrigin3D/XRController3D" instance=ExtResource("1_617nq")]
+
+[node name="MenuAncherPos" type="Node3D" parent="XROrigin3D/XRController3D"]
+transform = Transform3D(-0.0301537, -0.17101, -0.984808, 0.984808, -0.173648, 0, -0.17101, -0.969846, 0.173648, -0.0688312, -0.05, 0.133911)
+
+[node name="Viewport2Din3D" parent="XROrigin3D/XRController3D/MenuAncherPos" instance=ExtResource("2_ibbg7")]
+transform = Transform3D(1, 0, -7.45058e-09, 2.98023e-08, 1, 0, 7.45058e-09, -1.49012e-08, 1, 0.145139, 0.0633438, -0.00217566)
+screen_size = Vector2(0.367, 0.21)
+viewport_size = Vector2(705, 404)
+scene = ExtResource("2_j8t5d")
+update_mode = 2
+throttle_fps = 15.0
+
+[node name="XRController3D2" type="XRController3D" parent="XROrigin3D"]
+tracker = &"right_hand"
+pose = &"aim"
+
+[node name="RightHand" parent="XROrigin3D/XRController3D2" instance=ExtResource("3_451nl")]
+
+[node name="FunctionPointer" parent="XROrigin3D/XRController3D2" instance=ExtResource("4_lfyii")]
+laser_length = 1
+distance = 1.0
+collide_with_areas = true

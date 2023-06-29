@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://qjasq6ffsfhc"]
+
+[ext_resource type="Script" path="res://Runtime/MVVM/ViewModel/TimeViewModel.cs" id="1_5iy21"]
+[ext_resource type="Script" path="res://Runtime/World/DateTimeResource.cs" id="1_tyqch"]
+
+[sub_resource type="Resource" id="Resource_3dntm"]
+script = ExtResource("1_tyqch")
+
+[resource]
+script = ExtResource("1_5iy21")
+DateTime = SubResource("Resource_3dntm")
+Speed = 1.0
+MinutesOfDay = 0

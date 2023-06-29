@@ -1,0 +1,208 @@
+[gd_scene load_steps=19 format=3 uid="uid://b74o1ymlxiy3o"]
+
+[ext_resource type="PackedScene" uid="uid://b0gt3cxo3h2ph" path="res://Prefabs/WorldEnvironment.tscn" id="1_q56jb"]
+[ext_resource type="PackedScene" uid="uid://brufshgy6skm7" path="res://Models/Sponza/glTF/Sponza.gltf" id="4_0tlh6"]
+[ext_resource type="PackedScene" uid="uid://dqe60xk4dheks" path="res://Models/Lampenmodelle/5m_Lichtstele.gltf" id="4_7p30a"]
+[ext_resource type="PackedScene" uid="uid://dkufgwxanuna5" path="res://Models/Lampenmodelle/2m_Lichtstele.gltf" id="5_m870g"]
+[ext_resource type="PackedScene" uid="uid://c75lnlfxov2u5" path="res://Prefabs/Camera.tscn" id="7_6uuxw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pwd6q"]
+size = Vector3(100, 100, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qpxkh"]
+albedo_color = Color(0.5, 0.5, 0.5, 1)
+metallic = 1.0
+metallic_specular = 0.4
+roughness = 0.15
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_myji5"]
+material = SubResource("StandardMaterial3D_qpxkh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1kf6b"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cj5gu"]
+material = SubResource("StandardMaterial3D_1kf6b")
+size = Vector3(2, 2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o1u5c"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ttafr"]
+material = SubResource("StandardMaterial3D_o1u5c")
+size = Vector3(1, 2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a4a73"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yvdrl"]
+material = SubResource("StandardMaterial3D_a4a73")
+size = Vector3(2, 2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xc76p"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_csjcv"]
+material = SubResource("StandardMaterial3D_xc76p")
+size = Vector3(2, 2, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xb4hd"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4glgb"]
+material = SubResource("StandardMaterial3D_xb4hd")
+size = Vector3(2, 2, 1)
+
+[node name="DayNightCycleDemo" type="Node3D"]
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("1_q56jb")]
+
+[node name="TimeControl" parent="WorldEnvironment" index="2"]
+Multiplier = 6000.0
+
+[node name="Area3d" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0628557, 0)
+wind_force_magnitude = 0.459
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="Area3d"]
+visible = false
+shape = SubResource("BoxShape3D_pwd6q")
+
+[node name="Plane" type="MeshInstance3D" parent="Area3d"]
+transform = Transform3D(-1000, 0, -8.74228e-05, 0, 10, 0, 8.74228e-05, 0, -1000, 0, 0, 0)
+visible = false
+mesh = SubResource("PlaneMesh_myji5")
+
+[node name="Cube" type="MeshInstance3D" parent="Area3d"]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
+visible = false
+mesh = SubResource("BoxMesh_cj5gu")
+
+[node name="Cube2" type="MeshInstance3D" parent="Area3d"]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 3.31064, 0.963256, 3.02655)
+visible = false
+mesh = SubResource("BoxMesh_ttafr")
+
+[node name="Cube3" type="MeshInstance3D" parent="Area3d"]
+transform = Transform3D(-0.573905, 0, 0.818922, 0, 1, 0, -0.818922, 0, -0.573905, 1.82229, 0, -2.41289)
+visible = false
+mesh = SubResource("BoxMesh_yvdrl")
+
+[node name="Cube5" type="MeshInstance3D" parent="Area3d"]
+transform = Transform3D(-0.573905, 0, 0.818922, 0, 1, 0, -0.818922, 0, -0.573905, -13.9378, 0, 12.2805)
+visible = false
+mesh = SubResource("BoxMesh_csjcv")
+
+[node name="Cube6" type="MeshInstance3D" parent="Area3d"]
+transform = Transform3D(-0.573905, 0, 0.818922, 0, 1, 0, -0.818922, 0, -0.573905, -41.7877, 0, 36.3516)
+visible = false
+mesh = SubResource("BoxMesh_cj5gu")
+
+[node name="Cube7" type="MeshInstance3D" parent="Area3d"]
+transform = Transform3D(-0.573905, 0, 0.818922, 0, 1, 0, -0.818922, 0, -0.573905, -115.18, 0, 124.962)
+visible = false
+mesh = SubResource("BoxMesh_cj5gu")
+
+[node name="Cube4" type="MeshInstance3D" parent="Area3d"]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -3.07702, 0.419176, -2.14605)
+visible = false
+mesh = SubResource("BoxMesh_4glgb")
+
+[node name="5m_Lichtstele" parent="Area3d" instance=ExtResource("4_7p30a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.01297, 4.76837e-07, -1.43301)
+
+[node name="OmniLight3d" type="OmniLight3D" parent="Area3d/5m_Lichtstele"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.361392, 0)
+light_energy = 0.377
+shadow_enabled = true
+
+[node name="2m_Lichtstele" parent="Area3d" instance=ExtResource("5_m870g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.60759, -2.38419e-07, -0.202843)
+
+[node name="OmniLight3d" type="OmniLight3D" parent="Area3d/2m_Lichtstele"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.100601, 1.47533, -0.0676947)
+light_energy = 0.688
+
+[node name="Sponza" parent="Area3d" instance=ExtResource("4_0tlh6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0628557, 0)
+
+[node name="Node3d" type="Node3D" parent="Area3d"]
+
+[node name="LightmapProbe" type="LightmapProbe" parent="Area3d/Node3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.759404, 0)
+
+[node name="LightmapProbe2" type="LightmapProbe" parent="Area3d/Node3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.11683, 0.759404, 0)
+
+[node name="LightmapProbe3" type="LightmapProbe" parent="Area3d/Node3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.59052, 0.759404, 0)
+
+[node name="LightmapProbe4" type="LightmapProbe" parent="Area3d/Node3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4737, 0.759404, 0)
+
+[node name="LightmapProbe5" type="LightmapProbe" parent="Area3d/Node3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8823, 0.759404, 0)
+
+[node name="LightmapProbe6" type="LightmapProbe" parent="Area3d/Node3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9991, 0.759404, 0)
+
+[node name="LightmapProbe7" type="LightmapProbe" parent="Area3d/Node3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.29173, 0.759404, 0)
+
+[node name="LightmapProbe8" type="LightmapProbe" parent="Area3d/Node3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.40856, 0.759404, 0)
+
+[node name="LightmapProbe9" type="LightmapProbe" parent="Area3d/Node3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.759404, 3.02233)
+
+[node name="LightmapProbe10" type="LightmapProbe" parent="Area3d/Node3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.11683, 0.759404, 3.02233)
+
+[node name="LightmapProbe11" type="LightmapProbe" parent="Area3d/Node3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.59052, 0.759404, 3.02233)
+
+[node name="LightmapProbe12" type="LightmapProbe" parent="Area3d/Node3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4737, 0.759404, 3.02233)
+
+[node name="LightmapProbe13" type="LightmapProbe" parent="Area3d/Node3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8823, 0.759404, 3.02233)
+
+[node name="LightmapProbe14" type="LightmapProbe" parent="Area3d/Node3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9991, 0.759404, 3.02233)
+
+[node name="LightmapProbe15" type="LightmapProbe" parent="Area3d/Node3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.29173, 0.759404, 3.02233)
+
+[node name="LightmapProbe16" type="LightmapProbe" parent="Area3d/Node3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.40856, 0.759404, 3.02233)
+
+[node name="LightmapProbe17" type="LightmapProbe" parent="Area3d/Node3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.759404, -4.21637)
+
+[node name="LightmapProbe18" type="LightmapProbe" parent="Area3d/Node3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.11683, 0.759404, -4.21637)
+
+[node name="LightmapProbe19" type="LightmapProbe" parent="Area3d/Node3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.59052, 0.759404, -4.21637)
+
+[node name="LightmapProbe20" type="LightmapProbe" parent="Area3d/Node3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4737, 0.759404, -4.21637)
+
+[node name="LightmapProbe21" type="LightmapProbe" parent="Area3d/Node3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.8823, 0.759404, -4.21637)
+
+[node name="LightmapProbe22" type="LightmapProbe" parent="Area3d/Node3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9991, 0.759404, -4.21637)
+
+[node name="LightmapProbe23" type="LightmapProbe" parent="Area3d/Node3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.29173, 0.759404, -4.21637)
+
+[node name="LightmapProbe24" type="LightmapProbe" parent="Area3d/Node3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.40856, 0.759404, -4.21637)
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="Area3d"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7976, 0)
+size = Vector3(37.0718, 20, 20)
+
+[node name="Camera" parent="." instance=ExtResource("7_6uuxw")]
+
+[editable path="WorldEnvironment"]

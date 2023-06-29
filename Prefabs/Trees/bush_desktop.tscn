@@ -1,0 +1,135 @@
+[gd_scene load_steps=2 format=3 uid="uid://o37nmglgwud3"]
+
+[ext_resource type="PackedScene" uid="uid://cb14rlu5i0qfh" path="res://Models/Trees/Bush_Desktop.fbx" id="1_fc3xb"]
+
+[node name="Bush_Desktop" instance=ExtResource("1_fc3xb")]
+
+[node name="BoneAttachment3D" parent="RootNode/Skeleton3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0159573, -0.00651271, -0.0044429)
+bone_idx = 0
+
+[node name="BoneAttachment3D2" parent="RootNode/Skeleton3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00597432, 0.27914, -0.0268338)
+bone_idx = 1
+
+[node name="BoneAttachment3D3" parent="RootNode/Skeleton3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00661246, 0.284753, -0.0273297)
+bone_idx = 2
+
+[node name="BoneAttachment3D4" parent="RootNode/Skeleton3D" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00729274, 0.282746, -0.0264977)
+bone_idx = 3
+
+[node name="BoneAttachment3D5" parent="RootNode/Skeleton3D" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0050474, 0.253728, -0.0270413)
+bone_idx = 4
+
+[node name="BoneAttachment3D6" parent="RootNode/Skeleton3D" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00443578, 0.24523, -0.0274193)
+bone_idx = 5
+
+[node name="BoneAttachment3D7" parent="RootNode/Skeleton3D" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00515941, 0.249466, -0.0271357)
+bone_idx = 6
+
+[node name="BoneAttachment3D8" parent="RootNode/Skeleton3D" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00497573, 0.254363, -0.0270236)
+bone_idx = 7
+
+[node name="BoneAttachment3D9" parent="RootNode/Skeleton3D" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00391684, 0.21642, -0.0259443)
+bone_idx = 8
+
+[node name="BoneAttachment3D10" parent="RootNode/Skeleton3D" index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00365751, 0.210776, -0.0252369)
+bone_idx = 9
+
+[node name="BoneAttachment3D11" parent="RootNode/Skeleton3D" index="10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00310726, 0.21553, -0.0253108)
+bone_idx = 10
+
+[node name="BoneAttachment3D12" parent="RootNode/Skeleton3D" index="11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00286816, 0.216394, -0.0266233)
+bone_idx = 11
+
+[node name="BoneAttachment3D13" parent="RootNode/Skeleton3D" index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00360674, 0.175866, -0.020543)
+bone_idx = 12
+
+[node name="BoneAttachment3D14" parent="RootNode/Skeleton3D" index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00170725, 0.17893, -0.0190617)
+bone_idx = 13
+
+[node name="BoneAttachment3D15" parent="RootNode/Skeleton3D" index="14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00162255, 0.172799, -0.0213728)
+bone_idx = 14
+
+[node name="BoneAttachment3D16" parent="RootNode/Skeleton3D" index="15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00325084, 0.191805, -0.0237098)
+bone_idx = 15
+
+[node name="BoneAttachment3D17" parent="RootNode/Skeleton3D" index="16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00130777, 0.145444, -0.0192979)
+bone_idx = 16
+
+[node name="BoneAttachment3D18" parent="RootNode/Skeleton3D" index="17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00377571, 0.148371, -0.0180826)
+bone_idx = 17
+
+[node name="BoneAttachment3D19" parent="RootNode/Skeleton3D" index="18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00315522, 0.153854, -0.0198406)
+bone_idx = 18
+
+[node name="BoneAttachment3D20" parent="RootNode/Skeleton3D" index="19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00137794, 0.155799, -0.021001)
+bone_idx = 19
+
+[node name="BoneAttachment3D21" parent="RootNode/Skeleton3D" index="20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0089797, 0.109784, -0.0130985)
+bone_idx = 20
+
+[node name="BoneAttachment3D22" parent="RootNode/Skeleton3D" index="21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0104953, 0.120426, -0.0157104)
+bone_idx = 21
+
+[node name="BoneAttachment3D23" parent="RootNode/Skeleton3D" index="22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00667977, 0.115787, -0.0167143)
+bone_idx = 22
+
+[node name="BoneAttachment3D24" parent="RootNode/Skeleton3D" index="23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000934882, 0.0881217, -0.00338382)
+bone_idx = 23
+
+[node name="BoneAttachment3D25" parent="RootNode/Skeleton3D" index="24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00617476, 0.0911153, -0.00387894)
+bone_idx = 24
+
+[node name="BoneAttachment3D26" parent="RootNode/Skeleton3D" index="25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000502191, 0.0859929, -0.00560305)
+bone_idx = 25
+
+[node name="BoneAttachment3D27" parent="RootNode/Skeleton3D" index="26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00283625, 0.0541271, 0.00254984)
+bone_idx = 26
+
+[node name="BoneAttachment3D28" parent="RootNode/Skeleton3D" index="27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00236214, 0.0539171, -0.00300831)
+bone_idx = 27
+
+[node name="BoneAttachment3D29" parent="RootNode/Skeleton3D" index="28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00490745, 0.0500943, -0.00456659)
+bone_idx = 28
+
+[node name="BoneAttachment3D30" parent="RootNode/Skeleton3D" index="29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00507512, 0.0408542, 6.754e-05)
+bone_idx = 29
+
+[node name="BoneAttachment3D31" parent="RootNode/Skeleton3D" index="30"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00692204, 0.292742, -0.0266134)
+bone_idx = 30
+
+[node name="LOD0" parent="RootNode/Skeleton3D" index="31"]
+visible = false
+
+[node name="LOD1" parent="RootNode/Skeleton3D" index="32"]
+visible = false

@@ -1,0 +1,1 @@
+This Project uses Subtree instead of submodules for all Addons from external places.

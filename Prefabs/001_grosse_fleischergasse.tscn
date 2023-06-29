@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://hnm6xxmjk0r5"]
+
+[ext_resource type="PackedScene" uid="uid://2mbgxxccn1uc" path="res://Models/Innenstadt/001-grosse_fleischergasse.gltf" id="1_vyld6"]
+
+[node name="001-grosse_fleischergasse" instance=ExtResource("1_vyld6")]

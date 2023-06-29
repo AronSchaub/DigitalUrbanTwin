@@ -1,0 +1,584 @@
+[gd_scene load_steps=25 format=3 uid="uid://brp8yoi1goj1m"]
+
+[ext_resource type="Theme" uid="uid://dbkvw176dhnxu" path="res://Themes/Leipzig/Leipzig.tres" id="1_2wai0"]
+[ext_resource type="Texture2D" uid="uid://dqj224f82nnk7" path="res://Textures/Icons/building-fill.svg" id="2_ake4h"]
+[ext_resource type="Texture2D" uid="uid://csmnoiepn82o5" path="res://Textures/Icons/information-fill.svg" id="2_ei7ka"]
+[ext_resource type="Texture2D" uid="uid://bkqltfdqp8qa6" path="res://Textures/Icons/play-fill.svg" id="2_j1bjc"]
+[ext_resource type="Texture2D" uid="uid://ccr2djnsx3kvh" path="res://Textures/Icons/image-2-fill.svg" id="2_l57ne"]
+[ext_resource type="Texture2D" uid="uid://dqm88jpvc83cd" path="res://Textures/Icons/temp-cold-fill.svg" id="3_03ura"]
+[ext_resource type="Texture2D" uid="uid://dk8rkucemadjl" path="res://Textures/Icons/pause-fill.svg" id="3_x3buc"]
+[ext_resource type="Texture2D" uid="uid://dm0n6gkgnkagp" path="res://Textures/Icons/live-fill.svg" id="3_ylb0i"]
+[ext_resource type="Texture2D" uid="uid://btyy5lvvuddev" path="res://Textures/Icons/speed-fill.svg" id="4_mgqb7"]
+[ext_resource type="Texture2D" uid="uid://di61yekjnnui8" path="res://Textures/Icons/ff-fill.svg" id="5_kcl3s"]
+[ext_resource type="Texture2D" uid="uid://b43xq3ulll70x" path="res://Textures/Icons/route-fill.svg" id="8_cp0du"]
+[ext_resource type="Texture2D" uid="uid://bxjarlanefeav" path="res://Textures/Icons/settings-5-fill.svg" id="9_g4btl"]
+[ext_resource type="Texture2D" uid="uid://bpvuqpse2yyj6" path="res://Textures/Icons/lightbulb-fill.svg" id="9_pjxhn"]
+[ext_resource type="Texture2D" uid="uid://bs4o8xwu05g6d" path="res://Textures/Icons/seedling-fill.svg" id="11_rvoot"]
+[ext_resource type="Texture2D" uid="uid://bx4xpccpsqpkb" path="res://Textures/Icons/Props/2m_Lichtstele.png" id="11_visyo"]
+[ext_resource type="Texture2D" uid="uid://ch4py7gof60oq" path="res://Textures/Icons/recycle-fill.svg" id="12_ch1uy"]
+[ext_resource type="Texture2D" uid="uid://jmxymbyjou0g" path="res://Textures/Icons/Props/5m_Lichtstele.png" id="12_uc7ys"]
+[ext_resource type="Texture2D" uid="uid://bm0g43sxfojux" path="res://Textures/Icons/Props/Aufsatzleuchte_Zwei_Arm.png" id="13_kjoh3"]
+[ext_resource type="Texture2D" uid="uid://8exkq2v2e1k0" path="res://Textures/Icons/Props/Beton_Aufsatzleuchte.png" id="14_llvry"]
+[ext_resource type="Texture2D" uid="uid://8mlc8bfxxp7l" path="res://Textures/Icons/Props/LVB_Doppel_Mast.png" id="15_qeb5t"]
+[ext_resource type="Texture2D" uid="uid://drltww1cm12i7" path="res://Textures/Icons/Props/LVB_Mast.png" id="16_1tu7o"]
+[ext_resource type="Texture2D" uid="uid://04gyb0daepnu" path="res://Textures/Icons/Props/Schinkelleuchte_Mast.png" id="17_bf615"]
+[ext_resource type="Texture2D" uid="uid://dowsrny8ris47" path="res://Textures/Icons/Props/Schinkelleuchte_Wand.png" id="18_yvs6t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qhr8f"]
+
+[node name="RTS_UIDemo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_2wai0")
+
+[node name="P_Upper_Left" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 189.0
+offset_bottom = 56.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qhr8f")
+
+[node name="HFlowContainer" type="HFlowContainer" parent="P_Upper_Left"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = 391.0
+offset_bottom = 58.0
+
+[node name="info" type="Button" parent="P_Upper_Left/HFlowContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_type_variation = &"Button_Round"
+icon = ExtResource("2_ei7ka")
+icon_alignment = 1
+
+[node name="District" type="PanelContainer" parent="P_Upper_Left/HFlowContainer"]
+layout_mode = 2
+theme_type_variation = &"Panel_Blue"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="P_Upper_Left/HFlowContainer/District"]
+layout_mode = 2
+theme_type_variation = &"Panel_Blue"
+
+[node name="DistrictName" type="Label" parent="P_Upper_Left/HFlowContainer/District/HBoxContainer"]
+layout_mode = 2
+text = "Gohlis-Mitte"
+
+[node name="TempHum" type="PanelContainer" parent="P_Upper_Left/HFlowContainer"]
+layout_mode = 2
+theme_type_variation = &"Panel_Blue"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="P_Upper_Left/HFlowContainer/TempHum"]
+layout_mode = 2
+theme_type_variation = &"Panel_Blue"
+
+[node name="TextureRect" type="TextureRect" parent="P_Upper_Left/HFlowContainer/TempHum/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_03ura")
+stretch_mode = 4
+
+[node name="Temperature" type="Label" parent="P_Upper_Left/HFlowContainer/TempHum/HBoxContainer"]
+layout_mode = 2
+text = "18°C"
+
+[node name="PanelContainer3" type="PanelContainer" parent="P_Upper_Left/HFlowContainer"]
+visible = false
+layout_mode = 2
+theme_type_variation = &"Panel_Blue"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="P_Upper_Left/HFlowContainer/PanelContainer3"]
+layout_mode = 2
+theme_type_variation = &"Panel_Blue"
+
+[node name="Play_Pause" type="Button" parent="P_Upper_Left/HFlowContainer/PanelContainer3/HBoxContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+theme_type_variation = &"Button_Round"
+text = ">"
+
+[node name="DateTime" type="Label" parent="P_Upper_Left/HFlowContainer/PanelContainer3/HBoxContainer"]
+layout_mode = 2
+text = "12.11.22 18:30"
+
+[node name="Play_Pause2" type="Button" parent="P_Upper_Left/HFlowContainer/PanelContainer3/HBoxContainer"]
+custom_minimum_size = Vector2(36, 24)
+layout_mode = 2
+theme_type_variation = &"Button_Round"
+text = ">>>"
+
+[node name="PanelContainer4" type="PanelContainer" parent="P_Upper_Left/HFlowContainer"]
+visible = false
+layout_mode = 2
+theme_type_variation = &"Panel_Blue"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="P_Upper_Left/HFlowContainer/PanelContainer4"]
+layout_mode = 2
+theme_type_variation = &"Panel_Blue"
+
+[node name="Play_Pause" type="Button" parent="P_Upper_Left/HFlowContainer/PanelContainer4/HBoxContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+theme_type_variation = &"Button_Round"
+text = ">"
+
+[node name="DateTime" type="Label" parent="P_Upper_Left/HFlowContainer/PanelContainer4/HBoxContainer"]
+layout_mode = 2
+text = "12.11.22 18:30"
+
+[node name="Play_Pause2" type="Button" parent="P_Upper_Left/HFlowContainer/PanelContainer4/HBoxContainer"]
+custom_minimum_size = Vector2(36, 24)
+layout_mode = 2
+theme_type_variation = &"Button_Round"
+text = ">>>"
+
+[node name="P_Upper_Right" type="Panel" parent="."]
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -189.0
+offset_bottom = 56.0
+grow_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qhr8f")
+
+[node name="PanelContainer" type="PanelContainer" parent="P_Upper_Right"]
+layout_mode = 0
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -201.0
+offset_top = 12.0
+offset_right = -4.0
+offset_bottom = 58.0
+grow_horizontal = 0
+theme_type_variation = &"Panel_Blue"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="P_Upper_Right/PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="P_Upper_Right/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"Panel_Blue"
+
+[node name="Play_Pause" type="Button" parent="P_Upper_Right/PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+theme_type_variation = &"Button_Round"
+toggle_mode = true
+icon_alignment = 1
+
+[node name="Play" type="TextureRect" parent="P_Upper_Right/PanelContainer/VBoxContainer/HBoxContainer/Play_Pause"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_j1bjc")
+
+[node name="Pause" type="TextureRect" parent="P_Upper_Right/PanelContainer/VBoxContainer/HBoxContainer/Play_Pause"]
+visible = false
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_x3buc")
+
+[node name="DateTime" type="Label" parent="P_Upper_Right/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "12.11.22 18:30"
+
+[node name="Speed" type="Button" parent="P_Upper_Right/PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(42, 0)
+layout_mode = 2
+theme_type_variation = &"Button_Round"
+
+[node name="TextureRect" type="TextureRect" parent="P_Upper_Right/PanelContainer/VBoxContainer/HBoxContainer/Speed"]
+visible = false
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_j1bjc")
+
+[node name="TextureRect2" type="TextureRect" parent="P_Upper_Right/PanelContainer/VBoxContainer/HBoxContainer/Speed"]
+visible = false
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.0
+offset_top = -12.0
+offset_right = 12.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_mgqb7")
+
+[node name="TextureRect3" type="TextureRect" parent="P_Upper_Right/PanelContainer/VBoxContainer/HBoxContainer/Speed"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -12.0
+offset_right = 18.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_kcl3s")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="P_Upper_Right/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"Panel_Blue"
+
+[node name="HSlider" type="HSlider" parent="P_Upper_Right/PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+max_value = 1440.0
+step = 60.0
+
+[node name="P_Bottom_Right" type="Panel" parent="."]
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -189.0
+offset_top = -56.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qhr8f")
+
+[node name="PanelContainer" type="PanelContainer" parent="P_Bottom_Right"]
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -112.0
+offset_top = -68.0
+offset_right = -4.0
+offset_bottom = -6.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_type_variation = &"Panel_Blue"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="P_Bottom_Right/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_type_variation = &"Panel_Blue"
+alignment = 2
+
+[node name="Screenshot" type="Button" parent="P_Bottom_Right/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_type_variation = &"Button_Round"
+icon = ExtResource("2_l57ne")
+icon_alignment = 1
+
+[node name="StreetMode" type="Button" parent="P_Bottom_Right/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_type_variation = &"Button_Round"
+icon = ExtResource("3_ylb0i")
+icon_alignment = 1
+
+[node name="Settings" type="Button" parent="P_Bottom_Right/PanelContainer/HBoxContainer"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_type_variation = &"Button_Round"
+icon = ExtResource("9_g4btl")
+icon_alignment = 1
+
+[node name="P_Bottom_Mid" type="Panel" parent="."]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qhr8f")
+
+[node name="Content" type="PanelContainer" parent="P_Bottom_Mid"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -415.0
+offset_top = -210.0
+offset_right = 418.0
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"Panel_Blue"
+
+[node name="Streets" type="HBoxContainer" parent="P_Bottom_Mid/Content"]
+layout_mode = 2
+theme_type_variation = &"Panel_Blue"
+alignment = 2
+
+[node name="Button" type="Button" parent="P_Bottom_Mid/Content/Streets"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Lantern1"
+icon_alignment = 1
+
+[node name="Button2" type="Button" parent="P_Bottom_Mid/Content/Streets"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "lantern2"
+
+[node name="Button3" type="Button" parent="P_Bottom_Mid/Content/Streets"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Lantern3"
+
+[node name="Button4" type="Button" parent="P_Bottom_Mid/Content/Streets"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Bench1"
+
+[node name="Button5" type="Button" parent="P_Bottom_Mid/Content/Streets"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="P_Bottom_Mid/Content"]
+layout_mode = 2
+horizontal_scroll_mode = 2
+vertical_scroll_mode = 0
+
+[node name="Buildings" type="HBoxContainer" parent="P_Bottom_Mid/Content/ScrollContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_type_variation = &"Panel_Blue"
+alignment = 2
+
+[node name="2m_Lichtstele" type="Button" parent="P_Bottom_Mid/Content/ScrollContainer/Buildings"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+icon = ExtResource("11_visyo")
+alignment = 0
+icon_alignment = 1
+expand_icon = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="P_Bottom_Mid/Content/ScrollContainer/Buildings/2m_Lichtstele"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Lichstele
+2m"
+
+[node name="5m_Lichtstele" type="Button" parent="P_Bottom_Mid/Content/ScrollContainer/Buildings"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+icon = ExtResource("12_uc7ys")
+alignment = 0
+icon_alignment = 1
+expand_icon = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="P_Bottom_Mid/Content/ScrollContainer/Buildings/5m_Lichtstele"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Lichstele
+5m"
+
+[node name="Aufsatzleuchte_Zwei_Arm" type="Button" parent="P_Bottom_Mid/Content/ScrollContainer/Buildings"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+icon = ExtResource("13_kjoh3")
+alignment = 0
+icon_alignment = 1
+expand_icon = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="P_Bottom_Mid/Content/ScrollContainer/Buildings/Aufsatzleuchte_Zwei_Arm"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Aufsatzleuchte
+Zwei Arm"
+
+[node name="Beton_Aufsatzleuchte" type="Button" parent="P_Bottom_Mid/Content/ScrollContainer/Buildings"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+icon = ExtResource("14_llvry")
+alignment = 0
+icon_alignment = 1
+expand_icon = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="P_Bottom_Mid/Content/ScrollContainer/Buildings/Beton_Aufsatzleuchte"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Aufsatzleuchte
+Beton"
+
+[node name="LVB_Doppel_Mast" type="Button" parent="P_Bottom_Mid/Content/ScrollContainer/Buildings"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+icon = ExtResource("15_qeb5t")
+alignment = 0
+icon_alignment = 1
+expand_icon = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="P_Bottom_Mid/Content/ScrollContainer/Buildings/LVB_Doppel_Mast"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Doppelmast
+LVB"
+
+[node name="LVB_Mast" type="Button" parent="P_Bottom_Mid/Content/ScrollContainer/Buildings"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+icon = ExtResource("16_1tu7o")
+alignment = 0
+icon_alignment = 1
+expand_icon = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="P_Bottom_Mid/Content/ScrollContainer/Buildings/LVB_Mast"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Mast
+LVB"
+
+[node name="Schinkelleuchte_Mast" type="Button" parent="P_Bottom_Mid/Content/ScrollContainer/Buildings"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+icon = ExtResource("17_bf615")
+alignment = 0
+icon_alignment = 1
+expand_icon = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="P_Bottom_Mid/Content/ScrollContainer/Buildings/Schinkelleuchte_Mast"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Schinkelleuchte
+Mast"
+
+[node name="Schinkelleuchte_Wand" type="Button" parent="P_Bottom_Mid/Content/ScrollContainer/Buildings"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+icon = ExtResource("18_yvs6t")
+alignment = 0
+icon_alignment = 1
+expand_icon = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="P_Bottom_Mid/Content/ScrollContainer/Buildings/Schinkelleuchte_Wand"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Schinkelleuchte
+Wand"
+
+[node name="TabGroup" type="PanelContainer" parent="P_Bottom_Mid"]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -54.0
+offset_top = -62.0
+offset_right = 54.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"Panel_Blue"
+
+[node name="Tabs" type="HBoxContainer" parent="P_Bottom_Mid/TabGroup"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_type_variation = &"Panel_Blue"
+alignment = 2
+
+[node name="Streets" type="Button" parent="P_Bottom_Mid/TabGroup/Tabs"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_type_variation = &"Button_Round"
+icon = ExtResource("8_cp0du")
+icon_alignment = 1
+
+[node name="Props" type="Button" parent="P_Bottom_Mid/TabGroup/Tabs"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_type_variation = &"Button_Round"
+icon = ExtResource("9_pjxhn")
+icon_alignment = 1
+
+[node name="Buildings" type="Button" parent="P_Bottom_Mid/TabGroup/Tabs"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_type_variation = &"Button_Round"
+icon = ExtResource("2_ake4h")
+icon_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="P_Bottom_Mid/TabGroup/Tabs"]
+layout_mode = 2
+
+[node name="Height" type="Button" parent="P_Bottom_Mid/TabGroup/Tabs"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_type_variation = &"Button_Round"
+icon = ExtResource("11_rvoot")
+icon_alignment = 1
+
+[node name="Planish" type="Button" parent="P_Bottom_Mid/TabGroup/Tabs"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_type_variation = &"Button_Round"
+icon = ExtResource("12_ch1uy")
+icon_alignment = 1

@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://cm7fvikq6tnts"]
+
+[ext_resource type="PackedScene" uid="uid://c1ohp65e12jjb" path="res://Prefabs/Lanterns/schinkelleuchte_mast.tscn" id="1_j27fh"]
+[ext_resource type="Script" path="res://Runtime/3d_in_2d.gd" id="1_lcl0h"]
+[ext_resource type="PackedScene" uid="uid://du3wr7vmmnbjl" path="res://Prefabs/P_GUI.tscn" id="3_ke51n"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_flb1b"]
+viewport_path = NodePath("SubViewport")
+
+[node name="LightModelViewDemo" type="Node2D"]
+script = ExtResource("1_lcl0h")
+
+[node name="VRHand_UIDemo" parent="." instance=ExtResource("3_ke51n")]
+offset_left = 2.0
+offset_top = 552.0
+offset_right = 2.0
+offset_bottom = 552.0
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(155, 512)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="SubViewport"]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.39537, 9.79005)
+
+[node name="Schinkelleuchte_Mast" parent="SubViewport/Node3D" instance=ExtResource("1_j27fh")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(575, 326)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1046, 341)
+texture = SubResource("ViewportTexture_flb1b")

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://btbyo4jn34yl0"]
+
+[ext_resource type="PackedScene" uid="uid://neij4q3iocd7" path="res://Models/Lampenmodelle/Beton_Aufsatzleuchte.gltf" id="1_jm7e7"]
+
+[node name="Beton_Aufsatzleuchte" instance=ExtResource("1_jm7e7")]

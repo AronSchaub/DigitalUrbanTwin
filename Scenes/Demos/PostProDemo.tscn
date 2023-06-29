@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgpj2spcok4vl"]
+
+[ext_resource type="PackedScene" uid="uid://b74o1ymlxiy3o" path="res://Scenes/Demos/DayNightCycleDemo.tscn" id="2_lkuvo"]
+
+[node name="PostProdemo" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/ColorRect"]
+own_world_3d = true
+size = Vector2i(1920, 1080)
+
+[node name="DayNightCycleDemo" parent="CanvasLayer/ColorRect/SubViewport" instance=ExtResource("2_lkuvo")]

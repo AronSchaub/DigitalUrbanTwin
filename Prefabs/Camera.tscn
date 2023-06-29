@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://c75lnlfxov2u5"]
+
+[ext_resource type="Script" path="res://Runtime/UX/Camera.cs" id="1_pb8ne"]
+[ext_resource type="Script" path="res://Runtime/Util/RayCastRenderer.cs" id="2_2marh"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_b6n1y"]
+
+[node name="Camera" type="Camera3D"]
+fov = 90.0
+far = 100000.0
+script = ExtResource("1_pb8ne")
+
+[node name="CameraTilt" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+script = ExtResource("2_2marh")
+
+[node name="CameraZoom" type="Camera3D" parent="CameraTilt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
+current = true
+fov = 90.0
+far = 100000.0
+
+[node name="Line" type="MeshInstance3D" parent="CameraTilt"]
+mesh = SubResource("ImmediateMesh_b6n1y")
+
+[node name="RayCast" type="RayCast3D" parent="CameraTilt"]

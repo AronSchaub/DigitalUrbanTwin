@@ -1,0 +1,192 @@
+[gd_scene load_steps=33 format=3 uid="uid://cfpypv21ypiw"]
+
+[ext_resource type="Shader" path="res://Shaders/S_ProceduralHexBarrierShader.gdshader" id="1_crma4"]
+[ext_resource type="PackedScene" uid="uid://dpt6osuho6rqx" path="res://addons/PolygonCity/Full/City/City.gltf" id="2_3wwcq"]
+[ext_resource type="Shader" path="res://Shaders/S_EdgeDetection.gdshader" id="2_drm6p"]
+[ext_resource type="Shader" path="res://Shaders/S_Road.gdshader" id="3_ceo7b"]
+[ext_resource type="Shader" path="res://Shaders/S_EasyHeightmap.gdshader" id="4_cdgjp"]
+[ext_resource type="Texture2D" uid="uid://dvumlpj8d03xk" path="res://Textures/Pavement_RoadNew/TexturesCom_Pavement_RoadNew_White_1K_albedo.png" id="4_xqfxg"]
+[ext_resource type="Shader" path="res://Shaders/S_EdgeDetectionSecondPass.gdshader" id="7_ee5f7"]
+[ext_resource type="Shader" path="res://Shaders/S_EdgeDetectionFirstPass.gdshader" id="8_02clt"]
+[ext_resource type="Shader" path="res://Shaders/S_Toon.gdshader" id="9_gcghl"]
+[ext_resource type="Texture2D" uid="uid://de7emd7njutbq" path="res://Textures/Wallpaper_Woodchip/Wallpaper_Woodchip_001_basecolor.jpg" id="10_v8ovu"]
+[ext_resource type="PackedScene" uid="uid://brp8yoi1goj1m" path="res://Scenes/Demos/CitySim_UIDemo.tscn" id="11_2w2vf"]
+[ext_resource type="PackedScene" uid="uid://bpftfvelo5kdn" path="res://Scenes/Demos/VRHand2_UIDemo.tscn" id="11_q58hl"]
+[ext_resource type="Texture2D" uid="uid://03aifr2b6jma" path="res://Textures/Round_Gradient.png" id="13_og36t"]
+
+[sub_resource type="Environment" id="Environment_3o05b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_de7uq"]
+render_priority = 0
+shader = ExtResource("2_drm6p")
+shader_parameter/blend = 0.01
+shader_parameter/blend_depth = 0.01
+shader_parameter/distance_fade_blend = 20.0
+shader_parameter/distance_fade_length = 50.0
+shader_parameter/edge_color = Color(0, 0, 0, 1)
+shader_parameter/enable_depth_pass = true
+shader_parameter/threshold = 0.0
+shader_parameter/threshold_depth = 0.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_uko1l"]
+material = SubResource("ShaderMaterial_de7uq")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gt7xo"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_m2xds"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_4lpga"]
+noise = SubResource("FastNoiseLite_m2xds")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_n57tq"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_k5vwx"]
+as_normal_map = true
+noise = SubResource("FastNoiseLite_n57tq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3tmce"]
+render_priority = 0
+shader = ExtResource("4_cdgjp")
+shader_parameter/height_scale = null
+shader_parameter/noise = SubResource("NoiseTexture2D_4lpga")
+shader_parameter/normalmap = SubResource("NoiseTexture2D_k5vwx")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_sx7h8"]
+material = SubResource("ShaderMaterial_3tmce")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dw81u"]
+render_priority = 0
+shader = ExtResource("3_ceo7b")
+shader_parameter/road_texture = ExtResource("4_xqfxg")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_22bkf"]
+material = SubResource("ShaderMaterial_dw81u")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s7ilu"]
+render_priority = 0
+shader = ExtResource("1_crma4")
+shader_parameter/hex_size = null
+shader_parameter/scan_color = null
+shader_parameter/scan_line_size = null
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_q4vq1"]
+material = SubResource("ShaderMaterial_s7ilu")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sf3e1"]
+render_priority = 0
+shader = ExtResource("7_ee5f7")
+shader_parameter/albedo = Color(0.5, 0.5, 0.5, 1)
+shader_parameter/edge_color = Color(0.5, 0.5, 0.5, 1)
+shader_parameter/edge_strength = 0.2
+shader_parameter/metallic = null
+shader_parameter/roughness = 0.0
+shader_parameter/specular = null
+shader_parameter/texture_albedo = ExtResource("4_xqfxg")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f8geu"]
+render_priority = 0
+next_pass = SubResource("ShaderMaterial_sf3e1")
+shader = ExtResource("8_02clt")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7yrjp"]
+material = SubResource("ShaderMaterial_f8geu")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vjyj3"]
+render_priority = 0
+shader = ExtResource("9_gcghl")
+shader_parameter/_glossiness = 0.0
+shader_parameter/_rim_size = 0.5
+shader_parameter/_rim_smoothness = 0.01
+shader_parameter/_specular_smoothness = 0.01
+shader_parameter/_specular_strength = 0.075
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/shadow = 0.5
+shader_parameter/shadow_color = Color(0.705, 0.705, 0.705, 0.705)
+shader_parameter/shadow_width = 0.0
+shader_parameter/tex = ExtResource("10_v8ovu")
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4vnqp"]
+material = SubResource("ShaderMaterial_vjyj3")
+
+[node name="ShaderDemos" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.913545, 0.406737, 0, -0.406737, 0.913545, -1.56393, 11.8806, 17.6487)
+environment = SubResource("Environment_3o05b")
+
+[node name="Outline" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 2.98023e-08, 0, -2.98023e-08, 1, -0.5, -2.38419e-06, -0.5)
+top_level = true
+visible = false
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_uko1l")
+skeleton = NodePath("../..")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.869865, 0.264296, -0.416512, 1.49012e-08, 0.844356, 0.535783, 0.493289, -0.466059, 0.734476, -39.6547, 8.20941, -0.117277)
+
+[node name="City" parent="." instance=ExtResource("2_3wwcq")]
+
+[node name="GUIPanel3D" parent="." instance=ExtResource("11_q58hl")]
+transform = Transform3D(1, 0, 0, 0, 0.716716, 0.697365, 0, -0.697365, 0.716716, 0.343909, 0.818081, 10.7406)
+
+[node name="Node" type="Node3D" parent="."]
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Node"]
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0)
+mesh = SubResource("PlaneMesh_gt7xo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 19.0594, 5.82943, -2.9034)
+mesh = SubResource("CapsuleMesh_sx7h8")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 6.1462, 5.82943, -2.9034)
+mesh = SubResource("CapsuleMesh_22bkf")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Node"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.995949, 5.82943, -2.9034)
+mesh = SubResource("CapsuleMesh_q4vq1")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Node"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.995949, -0.544673, 6.27505)
+mesh = SubResource("CapsuleMesh_q4vq1")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Node"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -9.55984, 5.82943, -2.9034)
+mesh = SubResource("CapsuleMesh_7yrjp")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Node"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -16.8581, 5.82943, -2.9034)
+mesh = SubResource("CapsuleMesh_4vnqp")
+skeleton = NodePath("../..")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="RTS_UIDemo" parent="CanvasLayer" instance=ExtResource("11_2w2vf")]
+
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(2.15615, 0, 0, 0, 1, 0, 0, 0, 2.15615, 22.6159, 0.916368, 9.16723)
+extents = Vector3(5, 5, 5)
+texture_albedo = ExtResource("13_og36t")
+texture_emission = ExtResource("13_og36t")
+emission_energy = 0.27
+modulate = Color(0.196078, 0.133333, 0.054902, 1)
+albedo_mix = 0.0
+normal_fade = 0.196
+distance_fade_begin = 1.61
+distance_fade_length = 9.96
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 22.6159, 6.0873, 9.16723)
+visible = false
+spot_range = 10.0
+spot_attenuation = 0.217638
+spot_angle = 29.773
+spot_angle_attenuation = 0.258816

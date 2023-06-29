@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://buo2s666f5j73"]
+
+[ext_resource type="Environment" uid="uid://cjbruck6yyxpk" path="res://Enviroments/DefaultEnvironment.tres" id="1_7ukbm"]
+[ext_resource type="Script" path="res://Runtime/XR/XRController.cs" id="1_smdcw"]
+[ext_resource type="PackedScene" uid="uid://dtftgopj816g6" path="res://Scenes/Demos/VRHand2_UIDemo.tscn" id="3_558et"]
+[ext_resource type="PackedScene" uid="uid://dpt6osuho6rqx" path="res://addons/PolygonCity/Full/City/City.gltf" id="3_jvfl6"]
+[ext_resource type="PackedScene" uid="uid://b0gt3cxo3h2ph" path="res://Prefabs/WorldEnvironment.tscn" id="4_5a620"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_wdwwj"]
+auto_exposure_enabled = true
+dof_blur_far_enabled = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gagb6"]
+radius = 0.2
+height = 0.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_o6vsk"]
+size = Vector3(0.1, 0.1, 0.2)
+
+[node name="VRDemo" type="XROrigin3D"]
+editor_description = "https://youtu.be/wDXnsy2IH1A"
+script = ExtResource("1_smdcw")
+
+[node name="XrCamera3d" type="XRCamera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.602187, 0)
+environment = ExtResource("1_7ukbm")
+attributes = SubResource("CameraAttributesPractical_wdwwj")
+
+[node name="CsgMesh3d" type="CSGMesh3D" parent="XrCamera3d"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, -0.0848069, 0.200365)
+mesh = SubResource("CapsuleMesh_gagb6")
+
+[node name="LeftHand" type="XRController3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.349261, 0.243584, 0)
+tracker = &"left_hand"
+
+[node name="ControllerA" type="MeshInstance3D" parent="LeftHand"]
+mesh = SubResource("BoxMesh_o6vsk")
+
+[node name="RightHand" type="XRController3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.412238, 0.221776, 2.38419e-07)
+tracker = &"right_hand"
+
+[node name="ControllerB" type="MeshInstance3D" parent="RightHand"]
+mesh = SubResource("BoxMesh_o6vsk")
+skeleton = NodePath("../../LeftHand")
+
+[node name="Node3D" parent="RightHand/ControllerB" instance=ExtResource("3_558et")]
+transform = Transform3D(1, 0, 0, 0, 0.582336, 0.812948, 0, -0.812948, 0.582336, 0, 0.114502, -0.0622115)
+
+[node name="City" parent="." instance=ExtResource("3_jvfl6")]
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("4_5a620")]

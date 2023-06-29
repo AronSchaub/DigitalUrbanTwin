@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3 uid="uid://d07p650edow3w"]
+
+[ext_resource type="Script" path="res://Runtime/World/Player.cs" id="1"]
+[ext_resource type="Script" path="res://Runtime/DayNightCycle/Sun.cs" id="2"]
+[ext_resource type="Script" path="res://Runtime/DayNightCycle/Moon.cs" id="3"]
+[ext_resource type="Environment" uid="uid://cjbruck6yyxpk" path="res://Enviroments/DefaultEnvironment.tres" id="5"]
+[ext_resource type="Script" path="res://Runtime/Chunks/ChunkController.cs" id="6"]
+[ext_resource type="Texture2D" uid="uid://b6vb5dkw4by2t" path="res://Textures/Blank.png" id="13"]
+[ext_resource type="Shader" path="res://Shaders/TiltShift.gdshader" id="14"]
+
+[sub_resource type="CapsuleShape3D" id="1"]
+height = 1.8
+
+[sub_resource type="ShaderMaterial" id="3"]
+shader = ExtResource("14")
+
+[node name="Base" type="Node3D"]
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 7.25027, 0.269237, 21.3248)
+script = ExtResource("1")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Player"]
+shape = SubResource("1")
+
+[node name="ShootAnimation" type="Timer" parent="Player"]
+
+[node name="FloorDetector" type="RayCast3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="Camera" type="Camera3D" parent="Player"]
+transform = Transform3D(0.515091, -0.515309, 0.684936, 0.857059, 0.32032, -0.403541, -0.0114501, 0.794891, 0.606644, 77.5939, 20.632, 31.2078)
+visible = false
+fov = 90.0
+far = 10000.0
+
+[node name="Camera2" type="Camera3D" parent="Player"]
+transform = Transform3D(0.999822, 0.0162315, 0.00961651, 0.0149945, -0.374306, -0.927184, -0.0114501, 0.927163, -0.374483, 4.76837e-06, 0.380428, 0.911242)
+fov = 90.0
+
+[node name="Moon" type="DirectionalLight3D" parent="."]
+visible = false
+script = ExtResource("3")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Spatials" type="Node" parent="."]
+script = ExtResource("6")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("5")
+
+[node name="Sun" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(-0.999681, 0.0222211, -0.0120116, 0, 0.475523, 0.879703, 0.0252598, 0.879422, -0.475372, -1.90735e-06, 13.5779, 28.5535)
+light_color = Color(1, 0.768627, 0.478431, 1)
+light_energy = 0.7
+shadow_enabled = true
+script = ExtResource("2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TiltShift" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/TiltShift"]
+material = SubResource("3")
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("13")
+stretch_mode = 1

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://k645ovj7brsg"]
+
+[ext_resource type="Script" path="res://Runtime/Chunks/Loaders/EPSGConv.cs" id="1_qnw1s"]
+
+[node name="EPSGConvTest" type="Node"]
+script = ExtResource("1_qnw1s")

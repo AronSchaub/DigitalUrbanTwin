@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://cm4dwp4d4y7fg"]
+
+[ext_resource type="PackedScene" uid="uid://ck45cj2j5xb68" path="res://Prefabs/Raycast.tscn" id="1_jqgkk"]
+[ext_resource type="PackedScene" uid="uid://c1ohp65e12jjb" path="res://Prefabs/Lanterns/schinkelleuchte_mast.tscn" id="2_sw722"]
+
+[node name="VRDemoLaserSelection" type="XROrigin3D"]
+
+[node name="Schinkelleuchte_Mast" parent="." instance=ExtResource("2_sw722")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.426987, 0, -15.1386)
+LightTemperature = 6500.0
+
+[node name="XRCamera3D" type="XRCamera3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="XRCamera3D"]
+size = Vector3(0.2, 0.1, 0.1)
+
+[node name="XRController3D" type="XRController3D" parent="."]
+tracker = &"left_hand"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="XRController3D"]
+size = Vector3(0.1, 0.1, 0.2)
+
+[node name="XRController3D2" type="XRController3D" parent="."]
+tracker = &"right_hand"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="XRController3D2"]
+size = Vector3(0.1, 0.1, 0.2)
+
+[node name="Raycast" parent="XRController3D2/CSGBox3D" instance=ExtResource("1_jqgkk")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

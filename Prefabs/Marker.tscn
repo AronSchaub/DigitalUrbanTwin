@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctg2fk2q4xlbr"]
+
+[ext_resource type="Script" path="res://Runtime/Tiles/Marker.cs" id="1_eood6"]
+
+[node name="Marker" type="Node3D" node_paths=PackedStringArray("Label")]
+script = ExtResource("1_eood6")
+Label = NodePath("CsgCylinder3d/Label3d")
+
+[node name="CsgCylinder3d" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0.75, 0)
+height = 1.5
+sides = 4
+cone = true
+
+[node name="Label3d" type="Label3D" parent="CsgCylinder3d"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -1.25, 0)
+pixel_size = 0.01
+billboard = 2
+double_sided = false
+no_depth_test = true
+text = "Placeholder"
+horizontal_alignment = 3
+vertical_alignment = 2

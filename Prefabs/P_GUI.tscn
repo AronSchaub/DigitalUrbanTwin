@@ -1,0 +1,1276 @@
+[gd_scene load_steps=33 format=3 uid="uid://du3wr7vmmnbjl"]
+
+[ext_resource type="Theme" uid="uid://dbkvw176dhnxu" path="res://Themes/Leipzig/Leipzig.tres" id="1_s2ey8"]
+[ext_resource type="Script" path="res://Runtime/MVVM/View/MVVMContainer.cs" id="2_emk06"]
+[ext_resource type="Resource" uid="uid://drlxh6uil7en6" path="res://Resource/UiViewModel.tres" id="3_fqgp8"]
+[ext_resource type="Script" path="res://Runtime/MVVM/View/MVVMLabel.cs" id="4_v2rdq"]
+[ext_resource type="Resource" uid="uid://dqc7o1pxo8jqt" path="res://Resource/LightViewModel.tres" id="5_bd68x"]
+[ext_resource type="Texture2D" uid="uid://ssl6cerpopbm" path="res://Textures/Color_temperature_black_body_800-12200K.svg" id="5_yieyg"]
+[ext_resource type="Script" path="res://Runtime/MVVM/View/MVVMSlider.cs" id="6_32l6h"]
+[ext_resource type="ButtonGroup" uid="uid://3pr3bdm2ltdw" path="res://UI/KelvinButtonGroup.tres" id="7_uag0l"]
+[ext_resource type="Texture2D" uid="uid://dk8rkucemadjl" path="res://Textures/Icons/pause-fill.svg" id="8_vhkax"]
+[ext_resource type="Resource" uid="uid://qjasq6ffsfhc" path="res://Scenes/Demos/UIDemo.tscn" id="9_48cqj"]
+[ext_resource type="Texture2D" uid="uid://bkqltfdqp8qa6" path="res://Textures/Icons/play-fill.svg" id="9_mqdxi"]
+[ext_resource type="Texture2D" uid="uid://btyy5lvvuddev" path="res://Textures/Icons/speed-fill.svg" id="10_4yiqk"]
+[ext_resource type="Texture2D" uid="uid://di61yekjnnui8" path="res://Textures/Icons/ff-fill.svg" id="11_gb1x8"]
+[ext_resource type="Texture2D" uid="uid://bx4xpccpsqpkb" path="res://Textures/Icons/Props/2m_Lichtstele.png" id="12_eipvt"]
+[ext_resource type="Texture2D" uid="uid://jmxymbyjou0g" path="res://Textures/Icons/Props/5m_Lichtstele.png" id="13_fdrch"]
+[ext_resource type="Texture2D" uid="uid://bm0g43sxfojux" path="res://Textures/Icons/Props/Aufsatzleuchte_Zwei_Arm.png" id="14_nfogj"]
+[ext_resource type="Texture2D" uid="uid://8exkq2v2e1k0" path="res://Textures/Icons/Props/Beton_Aufsatzleuchte.png" id="15_0re6y"]
+[ext_resource type="Resource" uid="uid://k36tpth5hm1o" path="res://Resource/BuildViewModel.tres" id="15_1apvt"]
+[ext_resource type="Texture2D" uid="uid://8mlc8bfxxp7l" path="res://Textures/Icons/Props/LVB_Doppel_Mast.png" id="16_3mkue"]
+[ext_resource type="Texture2D" uid="uid://drltww1cm12i7" path="res://Textures/Icons/Props/LVB_Mast.png" id="17_im260"]
+[ext_resource type="Texture2D" uid="uid://04gyb0daepnu" path="res://Textures/Icons/Props/Schinkelleuchte_Mast.png" id="18_aapmu"]
+[ext_resource type="Texture2D" uid="uid://dowsrny8ris47" path="res://Textures/Icons/Props/Schinkelleuchte_Wand.png" id="19_fwpdi"]
+[ext_resource type="Script" path="res://Runtime/UX/CircularContainer.cs" id="20_70kvv"]
+[ext_resource type="ButtonGroup" uid="uid://bnqxx57vfb25y" path="res://UI/RingMenuToggleGroup.tres" id="21_guvvq"]
+[ext_resource type="Texture2D" uid="uid://dqj224f82nnk7" path="res://Textures/Icons/building-fill.svg" id="21_qwgsa"]
+[ext_resource type="Script" path="res://Runtime/MVVM/View/MVVMButton.cs" id="22_ck6lt"]
+[ext_resource type="Texture2D" uid="uid://ch4py7gof60oq" path="res://Textures/Icons/recycle-fill.svg" id="23_4aisa"]
+[ext_resource type="Texture2D" uid="uid://omf1kkdvr66n" path="res://Textures/Icons/time-fill.svg" id="24_cd36j"]
+[ext_resource type="Texture2D" uid="uid://b43xq3ulll70x" path="res://Textures/Icons/route-fill.svg" id="25_cl66i"]
+[ext_resource type="Texture2D" uid="uid://bpvuqpse2yyj6" path="res://Textures/Icons/lightbulb-fill.svg" id="26_grhce"]
+[ext_resource type="Texture2D" uid="uid://ccr2djnsx3kvh" path="res://Textures/Icons/image-2-fill.svg" id="31_nqvcw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qhr8f"]
+
+[node name="P_GUI" type="Control"]
+editor_description = "705x404"
+layout_mode = 3
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
+theme = ExtResource("1_s2ey8")
+
+[node name="P_Bottom_Mid" type="Panel" parent="."]
+layout_mode = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qhr8f")
+
+[node name="Light" type="PanelContainer" parent="P_Bottom_Mid"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 152.0
+offset_top = -209.0
+offset_right = 704.0
+offset_bottom = 77.0
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_type_variation = &"Panel_Blue"
+script = ExtResource("2_emk06")
+Visible_binding = "MenuModeLightSettingsToggle"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+DataModel = ExtResource("3_fqgp8")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="P_Bottom_Mid/Light"]
+layout_mode = 2
+
+[node name="Colortemp" type="VBoxContainer" parent="P_Bottom_Mid/Light/VBoxContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="P_Bottom_Mid/Light/VBoxContainer2/Colortemp"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="Label" parent="P_Bottom_Mid/Light/VBoxContainer2/Colortemp/HBoxContainer2"]
+layout_mode = 2
+text = "Farbtemperatur:"
+
+[node name="Temp" type="Label" parent="P_Bottom_Mid/Light/VBoxContainer2/Colortemp/HBoxContainer2"]
+layout_mode = 2
+text = "0"
+script = ExtResource("4_v2rdq")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "LightTemperature"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+DataModel = ExtResource("5_bd68x")
+
+[node name="RichTextLabel3" type="Label" parent="P_Bottom_Mid/Light/VBoxContainer2/Colortemp/HBoxContainer2"]
+layout_mode = 2
+text = "K"
+
+[node name="TextureRect" type="TextureRect" parent="P_Bottom_Mid/Light/VBoxContainer2/Colortemp"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("5_yieyg")
+expand_mode = 3
+
+[node name="HSlider" type="HSlider" parent="P_Bottom_Mid/Light/VBoxContainer2/Colortemp"]
+layout_mode = 2
+min_value = 800.0
+max_value = 12000.0
+step = 100.0
+value = 800.0
+script = ExtResource("6_32l6h")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Value_binding = "LightTemperature"
+Value_direction = 0
+Value_converter = "MVVMConverter"
+Value_param = ""
+MinValue_binding = "-None-"
+MinValue_direction = 0
+MinValue_converter = "MVVMConverter"
+MinValue_param = ""
+MaxValue_binding = "-None-"
+MaxValue_direction = 0
+MaxValue_converter = "MVVMConverter"
+MaxValue_param = ""
+DataModel = ExtResource("5_bd68x")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="P_Bottom_Mid/Light/VBoxContainer2/Colortemp"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="P_Bottom_Mid/Light/VBoxContainer2/Colortemp/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("7_uag0l")
+text = "800"
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "SetTemperatureCommand"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = "800"
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("5_bd68x")
+
+[node name="Button2" type="Button" parent="P_Bottom_Mid/Light/VBoxContainer2/Colortemp/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("7_uag0l")
+text = "2000"
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "SetTemperatureCommand"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = "2000"
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("5_bd68x")
+
+[node name="Button3" type="Button" parent="P_Bottom_Mid/Light/VBoxContainer2/Colortemp/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("7_uag0l")
+text = "4000"
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "SetTemperatureCommand"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = "4000"
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("5_bd68x")
+
+[node name="Button4" type="Button" parent="P_Bottom_Mid/Light/VBoxContainer2/Colortemp/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("7_uag0l")
+text = "8000"
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "SetTemperatureCommand"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = "8000"
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("5_bd68x")
+
+[node name="Button5" type="Button" parent="P_Bottom_Mid/Light/VBoxContainer2/Colortemp/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("7_uag0l")
+text = "10000"
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "SetTemperatureCommand"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = "10000"
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("5_bd68x")
+
+[node name="Button6" type="Button" parent="P_Bottom_Mid/Light/VBoxContainer2/Colortemp/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("7_uag0l")
+text = "12000"
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "SetTemperatureCommand"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = "12000"
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("5_bd68x")
+
+[node name="Debug" type="Button" parent="P_Bottom_Mid/Light/VBoxContainer2/Colortemp/HBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "Debug"
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "EnableDebug"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = ""
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("5_bd68x")
+
+[node name="Intensität" type="VBoxContainer" parent="P_Bottom_Mid/Light/VBoxContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="P_Bottom_Mid/Light/VBoxContainer2/Intensität"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="Label" parent="P_Bottom_Mid/Light/VBoxContainer2/Intensität/HBoxContainer"]
+layout_mode = 2
+text = "Intensität:"
+
+[node name="Value" type="Label" parent="P_Bottom_Mid/Light/VBoxContainer2/Intensität/HBoxContainer"]
+layout_mode = 2
+text = "0"
+script = ExtResource("4_v2rdq")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "LightIntensity"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+DataModel = ExtResource("5_bd68x")
+
+[node name="Value2" type="Label" parent="P_Bottom_Mid/Light/VBoxContainer2/Intensität/HBoxContainer"]
+layout_mode = 2
+text = "/10"
+
+[node name="HSlider" type="HSlider" parent="P_Bottom_Mid/Light/VBoxContainer2/Intensität"]
+layout_mode = 2
+max_value = 10.0
+step = 0.1
+script = ExtResource("6_32l6h")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Value_binding = "LightIntensity"
+Value_direction = 0
+Value_converter = "MVVMConverter"
+Value_param = ""
+MinValue_binding = "-None-"
+MinValue_direction = 0
+MinValue_converter = "MVVMConverter"
+MinValue_param = ""
+MaxValue_binding = "-None-"
+MaxValue_direction = 0
+MaxValue_converter = "MVVMConverter"
+MaxValue_param = ""
+DataModel = ExtResource("5_bd68x")
+
+[node name="Leuchtkegel" type="VBoxContainer" parent="P_Bottom_Mid/Light/VBoxContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="P_Bottom_Mid/Light/VBoxContainer2/Leuchtkegel"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="Label" parent="P_Bottom_Mid/Light/VBoxContainer2/Leuchtkegel/HBoxContainer"]
+layout_mode = 2
+text = "Lichtkegelradius:"
+
+[node name="Value" type="Label" parent="P_Bottom_Mid/Light/VBoxContainer2/Leuchtkegel/HBoxContainer"]
+layout_mode = 2
+text = "0"
+script = ExtResource("4_v2rdq")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "LightAngle"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+DataModel = ExtResource("5_bd68x")
+
+[node name="Value2" type="Label" parent="P_Bottom_Mid/Light/VBoxContainer2/Leuchtkegel/HBoxContainer"]
+layout_mode = 2
+text = "m"
+
+[node name="HSlider" type="HSlider" parent="P_Bottom_Mid/Light/VBoxContainer2/Leuchtkegel"]
+layout_mode = 2
+max_value = 10.0
+step = 0.1
+script = ExtResource("6_32l6h")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Value_binding = "LightAngle"
+Value_direction = 0
+Value_converter = "MVVMConverter"
+Value_param = ""
+MinValue_binding = "-None-"
+MinValue_direction = 0
+MinValue_converter = "MVVMConverter"
+MinValue_param = ""
+MaxValue_binding = "-None-"
+MaxValue_direction = 0
+MaxValue_converter = "MVVMConverter"
+MaxValue_param = ""
+DataModel = ExtResource("5_bd68x")
+
+[node name="Time" type="PanelContainer" parent="P_Bottom_Mid"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 152.0
+offset_top = -209.0
+offset_right = 704.0
+offset_bottom = 77.0
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_type_variation = &"Panel_Blue"
+script = ExtResource("2_emk06")
+Visible_binding = "MenuModeTimeSettingsToggle"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+DataModel = ExtResource("3_fqgp8")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="P_Bottom_Mid/Time"]
+layout_mode = 2
+
+[node name="Colortemp" type="VBoxContainer" parent="P_Bottom_Mid/Time/VBoxContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="P_Bottom_Mid/Time/VBoxContainer2/Colortemp"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="Label" parent="P_Bottom_Mid/Time/VBoxContainer2/Colortemp/HBoxContainer2"]
+layout_mode = 2
+text = "Datum: "
+
+[node name="Date" type="Label" parent="P_Bottom_Mid/Time/VBoxContainer2/Colortemp/HBoxContainer2"]
+layout_mode = 2
+text = "16. Januar 2023"
+script = ExtResource("4_v2rdq")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "DateTime"
+Text_direction = 0
+Text_converter = "DateTimeConverter"
+Text_param = "d. MMMM yyy"
+DataModel = ExtResource("9_48cqj")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="P_Bottom_Mid/Time/VBoxContainer2/Colortemp"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="Label" parent="P_Bottom_Mid/Time/VBoxContainer2/Colortemp/HBoxContainer3"]
+layout_mode = 2
+text = "Uhrzeit:"
+
+[node name="Time" type="Label" parent="P_Bottom_Mid/Time/VBoxContainer2/Colortemp/HBoxContainer3"]
+layout_mode = 2
+text = "19:38"
+script = ExtResource("4_v2rdq")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "DateTimeConverter"
+Visible_param = ""
+Text_binding = "DateTime"
+Text_direction = 0
+Text_converter = "DateTimeConverter"
+Text_param = "HH:mm"
+DataModel = ExtResource("9_48cqj")
+
+[node name="TextureRect" type="TextureRect" parent="P_Bottom_Mid/Time/VBoxContainer2/Colortemp"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="P_Bottom_Mid/Time/VBoxContainer2/Colortemp"]
+layout_mode = 2
+max_value = 1439.0
+value = 1178.0
+ticks_on_borders = true
+script = ExtResource("6_32l6h")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Value_binding = "DateTime"
+Value_direction = 0
+Value_converter = "MinuteOfDayConverter"
+Value_param = ""
+MinValue_binding = "-None-"
+MinValue_direction = 0
+MinValue_converter = "MVVMConverter"
+MinValue_param = ""
+MaxValue_binding = "-None-"
+MaxValue_direction = 0
+MaxValue_converter = "MVVMConverter"
+MaxValue_param = ""
+DataModel = ExtResource("9_48cqj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="P_Bottom_Mid/Time/VBoxContainer2/Colortemp"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="P_Bottom_Mid/Time/VBoxContainer2/Colortemp/HBoxContainer"]
+layout_mode = 2
+text = "6:00"
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "SetTimeCommand"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = "6:00"
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("9_48cqj")
+
+[node name="Button2" type="Button" parent="P_Bottom_Mid/Time/VBoxContainer2/Colortemp/HBoxContainer"]
+layout_mode = 2
+text = "9:00"
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "SetTimeCommand"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = "9:00"
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("9_48cqj")
+
+[node name="Button3" type="Button" parent="P_Bottom_Mid/Time/VBoxContainer2/Colortemp/HBoxContainer"]
+layout_mode = 2
+text = "12:00"
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "SetTimeCommand"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = "12:00"
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("9_48cqj")
+
+[node name="Button4" type="Button" parent="P_Bottom_Mid/Time/VBoxContainer2/Colortemp/HBoxContainer"]
+layout_mode = 2
+text = "15:00"
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "SetTimeCommand"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = "15:00"
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("9_48cqj")
+
+[node name="Button5" type="Button" parent="P_Bottom_Mid/Time/VBoxContainer2/Colortemp/HBoxContainer"]
+layout_mode = 2
+text = "18:00"
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "SetTimeCommand"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = "18:00"
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("9_48cqj")
+
+[node name="Button6" type="Button" parent="P_Bottom_Mid/Time/VBoxContainer2/Colortemp/HBoxContainer"]
+layout_mode = 2
+text = "22:00"
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "SetTimeCommand"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = "22:00"
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("9_48cqj")
+
+[node name="TextureRect2" type="TextureRect" parent="P_Bottom_Mid/Time/VBoxContainer2/Colortemp"]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="P_Bottom_Mid/Time/VBoxContainer2/Colortemp"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="P_Bottom_Mid/Time/VBoxContainer2/Colortemp/HBoxContainer4"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("7_uag0l")
+text = "pause"
+icon = ExtResource("8_vhkax")
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "PauseCommand"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = ""
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("9_48cqj")
+
+[node name="Button2" type="Button" parent="P_Bottom_Mid/Time/VBoxContainer2/Colortemp/HBoxContainer4"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("7_uag0l")
+text = "play"
+icon = ExtResource("9_mqdxi")
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "PlayCommand"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = ""
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("9_48cqj")
+
+[node name="Button3" type="Button" parent="P_Bottom_Mid/Time/VBoxContainer2/Colortemp/HBoxContainer4"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("7_uag0l")
+text = "2x"
+icon = ExtResource("10_4yiqk")
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "ForwardCommand"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = ""
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("9_48cqj")
+
+[node name="Button4" type="Button" parent="P_Bottom_Mid/Time/VBoxContainer2/Colortemp/HBoxContainer4"]
+layout_mode = 2
+toggle_mode = true
+button_group = ExtResource("7_uag0l")
+text = "4x"
+icon = ExtResource("11_gb1x8")
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "FastForwardCommand"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = ""
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("9_48cqj")
+
+[node name="Build" type="PanelContainer" parent="P_Bottom_Mid"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 152.0
+offset_top = -209.0
+offset_right = 704.0
+offset_bottom = 77.0
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_type_variation = &"Panel_Blue"
+script = ExtResource("2_emk06")
+Visible_binding = "MenuModeBuildToggle"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+DataModel = ExtResource("3_fqgp8")
+
+[node name="Buildings2" type="GridContainer" parent="P_Bottom_Mid/Build"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_type_variation = &"Panel_Blue"
+columns = 4
+
+[node name="2m_Lichtstele" type="Button" parent="P_Bottom_Mid/Build/Buildings2"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("12_eipvt")
+alignment = 0
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "LanternSelectedCommand"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = "res://Prefabs/Lanterns/2m_lichtstele.tscn"
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("15_1apvt")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="P_Bottom_Mid/Build/Buildings2/2m_Lichtstele"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+text = "Lichstele
+2m"
+
+[node name="5m_Lichtstele" type="Button" parent="P_Bottom_Mid/Build/Buildings2"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("13_fdrch")
+alignment = 0
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "LanternSelectedCommand"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = "res://Prefabs/Lanterns/5m_lichtstele.tscn"
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("15_1apvt")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="P_Bottom_Mid/Build/Buildings2/5m_Lichtstele"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+text = "Lichstele
+5m"
+
+[node name="Aufsatzleuchte_Zwei_Arm" type="Button" parent="P_Bottom_Mid/Build/Buildings2"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("14_nfogj")
+alignment = 0
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "LanternSelectedCommand"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = "res://Prefabs/Lanterns/aufsatzleuchte_zwei_arm.tscn"
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("15_1apvt")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="P_Bottom_Mid/Build/Buildings2/Aufsatzleuchte_Zwei_Arm"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+text = "Aufsatzleuchte
+Zwei Arm"
+
+[node name="Beton_Aufsatzleuchte" type="Button" parent="P_Bottom_Mid/Build/Buildings2"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+icon = ExtResource("15_0re6y")
+alignment = 0
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "LanternSelectedCommand"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = "res://Prefabs/Lanterns/beton_aufsatzleuchte.tscn"
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("15_1apvt")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="P_Bottom_Mid/Build/Buildings2/Beton_Aufsatzleuchte"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+text = "Aufsatzleuchte
+Beton"
+
+[node name="LVB_Doppel_Mast" type="Button" parent="P_Bottom_Mid/Build/Buildings2"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("16_3mkue")
+alignment = 0
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "LanternSelectedCommand"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = "res://Prefabs/Lanterns/lvb_doppel_mast.tscn"
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("15_1apvt")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="P_Bottom_Mid/Build/Buildings2/LVB_Doppel_Mast"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+text = "Doppelmast
+LVB"
+
+[node name="LVB_Mast" type="Button" parent="P_Bottom_Mid/Build/Buildings2"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("17_im260")
+alignment = 0
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "LanternSelectedCommand"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = "res://Prefabs/Lanterns/lvb_mast.tscn"
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("15_1apvt")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="P_Bottom_Mid/Build/Buildings2/LVB_Mast"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+text = "Mast
+LVB"
+
+[node name="Schinkelleuchte_Mast" type="Button" parent="P_Bottom_Mid/Build/Buildings2"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("18_aapmu")
+alignment = 0
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "LanternSelectedCommand"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = "res://Prefabs/Lanterns/schinkelleuchte_mast.tscn"
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("15_1apvt")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="P_Bottom_Mid/Build/Buildings2/Schinkelleuchte_Mast"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+text = "Schinkelleuchte
+Mast"
+
+[node name="Schinkelleuchte_Wand" type="Button" parent="P_Bottom_Mid/Build/Buildings2"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+size_flags_horizontal = 3
+icon = ExtResource("19_fwpdi")
+alignment = 0
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "LanternSelectedCommand"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = "res://Prefabs/Lanterns/schinkelleuchte_wand.tscn"
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("15_1apvt")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="P_Bottom_Mid/Build/Buildings2/Schinkelleuchte_Wand"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+text = "Schinkelleuchte
+Wand"
+
+[node name="TabGroup" type="PanelContainer" parent="P_Bottom_Mid"]
+self_modulate = Color(1, 1, 1, 0.498039)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -77.0
+offset_right = 154.0
+offset_bottom = 77.0
+grow_vertical = 2
+theme_type_variation = &"Panel_Blue"
+
+[node name="Tabs" type="Container" parent="P_Bottom_Mid/TabGroup"]
+layout_mode = 2
+theme_type_variation = &"Panel_Blue"
+script = ExtResource("20_70kvv")
+ForceExpand = true
+StartAngle = 30.0
+
+[node name="Sub_PlaceLantern" type="Button" parent="P_Bottom_Mid/TabGroup/Tabs"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_type_variation = &"Button_Round"
+toggle_mode = true
+button_group = ExtResource("21_guvvq")
+icon = ExtResource("21_qwgsa")
+icon_alignment = 1
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "MenuModeBuildToggle"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = ""
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("3_fqgp8")
+
+[node name="Sub_TimeSettings" type="Button" parent="P_Bottom_Mid/TabGroup/Tabs"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_type_variation = &"Button_Round"
+toggle_mode = true
+button_group = ExtResource("21_guvvq")
+icon = ExtResource("24_cd36j")
+icon_alignment = 1
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "MenuModeTimeSettingsToggle"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = ""
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("3_fqgp8")
+
+[node name="Sub_LanternSettings" type="Button" parent="P_Bottom_Mid/TabGroup/Tabs"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_type_variation = &"Button_Round"
+toggle_mode = true
+button_group = ExtResource("21_guvvq")
+icon = ExtResource("26_grhce")
+icon_alignment = 1
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "MenuModeLightSettingsToggle"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = ""
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("3_fqgp8")
+
+[node name="Cmd_SelectAll" type="Button" parent="P_Bottom_Mid/TabGroup/Tabs"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_type_variation = &"Button_Round"
+icon = ExtResource("25_cl66i")
+icon_alignment = 1
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "LanternSelectAllCommand"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = ""
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("3_fqgp8")
+
+[node name="Cmd_DeleteLantern" type="Button" parent="P_Bottom_Mid/TabGroup/Tabs"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_type_variation = &"Button_Round"
+icon = ExtResource("23_4aisa")
+icon_alignment = 1
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "LanternDeleteCommand"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = ""
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("3_fqgp8")
+
+[node name="Cmd_Screenshot" type="Button" parent="P_Bottom_Mid/TabGroup/Tabs"]
+custom_minimum_size = Vector2(42, 42)
+layout_mode = 2
+theme_type_variation = &"Button_Round"
+icon = ExtResource("31_nqvcw")
+icon_alignment = 1
+script = ExtResource("22_ck6lt")
+Visible_binding = "-None-"
+Visible_direction = 0
+Visible_converter = "MVVMConverter"
+Visible_param = ""
+Text_binding = "-None-"
+Text_direction = 0
+Text_converter = "MVVMConverter"
+Text_param = ""
+ButtonPressed_binding = "ScreenshotCommand"
+ButtonPressed_direction = 0
+ButtonPressed_converter = "MVVMConverter"
+ButtonPressed_param = ""
+Icon_binding = "-None-"
+Icon_direction = 0
+Icon_converter = "MVVMConverter"
+Icon_param = ""
+DataModel = ExtResource("3_fqgp8")

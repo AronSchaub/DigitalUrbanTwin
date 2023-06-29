@@ -1,3 +1,11 @@
+# Project Specific ignores
+
+Models/Innenstadt/*
+!Models/Innenstadt/.gitkeep
+Models/Lampenmodelle/*
+Generated/*
+!Models/Lampenmodelle/.gitkeep
+
 # Godot 4+ specific ignores
 .godot/
 
@@ -13,3 +21,6 @@ export_presets.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+#Krita
+*~

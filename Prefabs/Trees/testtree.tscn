@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cexb7asv8erp7"]
+
+[ext_resource type="PackedScene" uid="uid://bfocxbcmuggwd" path="res://Models/Testtree/Test.fbx" id="1_hqp76"]
+
+[node name="Test" instance=ExtResource("1_hqp76")]

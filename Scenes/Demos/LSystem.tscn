@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://iorkj1gdclp6"]
+
+[ext_resource type="Script" path="res://Runtime/Vegetation/SimplePlant.cs" id="1_nu65k"]
+[ext_resource type="Script" path="res://Runtime/Vegetation/Bush.cs" id="2_w6cip"]
+[ext_resource type="PackedScene" uid="uid://c75lnlfxov2u5" path="res://Prefabs/Camera.tscn" id="3_t5wvf"]
+
+[node name="LSystem" type="Node3D"]
+
+[node name="SimplePlant" type="Node3D" parent="."]
+visible = false
+script = ExtResource("1_nu65k")
+
+[node name="Bush" type="Node3D" parent="."]
+script = ExtResource("2_w6cip")
+Iterations = 10
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+
+[node name="Camera" parent="." instance=ExtResource("3_t5wvf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 13.1603, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.627882, 0.408817, -0.662294, 0, 0.85094, 0.525264, 0.778309, -0.329803, 0.534289, -4.7446, 0, 3.24346)
